@@ -19,6 +19,8 @@ from rest_framework import routers
 from server import views
 from server.views import LoginView
 
+admin.autodiscover()
+
 router = routers.DefaultRouter()
 router.register(r'^occurrences', views.OccurrenceViewSet)
 

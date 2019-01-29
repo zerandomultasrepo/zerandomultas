@@ -18,8 +18,10 @@ from django.conf.urls import include, url
 from rest_framework import routers
 from server import views
 from server.views import LoginView
+from server.models import Occurrence
 
 admin.autodiscover()
+admin.site.register(Occurrence)
 
 router = routers.DefaultRouter()
 router.register(r'^occurrences', views.OccurrenceViewSet)

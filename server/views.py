@@ -7,7 +7,7 @@ from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework_jwt.views import ObtainJSONWebToken
 
 
-SAFE_METHODS = ('POST', 'HEAD', 'OPTIONS', 'GET')
+SAFE_METHODS = ('POST', 'HEAD', 'OPTIONS')
 
 
 class IsAuthenticatedOrCreate(BasePermission):

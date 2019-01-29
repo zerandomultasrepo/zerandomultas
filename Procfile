@@ -1,1 +1,1 @@
-web:gunicorn occurrences.wsgi --log-file -
+web: gunicorn occurrences.wsgi

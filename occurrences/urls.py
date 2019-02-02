@@ -18,6 +18,7 @@ from django.conf.urls import include, url
 from rest_framework import routers
 from server import views
 from server.views import LoginView
+from django.views.generic import TemplateView
 
 router = routers.DefaultRouter()
 router.register(r'^occurrences', views.OccurrenceViewSet)
@@ -25,6 +26,7 @@ router.register(r'^occurrences', views.OccurrenceViewSet)
 from server.views import LoginView
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
+ #   url(r'^', include(router.urls)),
     url(r'^login', LoginView.as_view(), name="login"),
+    url(r'^', TemplateView.as_view(template_name="index.html"), name="login"),
 ]

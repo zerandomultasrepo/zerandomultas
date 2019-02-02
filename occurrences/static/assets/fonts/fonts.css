@@ -1,0 +1,54 @@
+@font-face {
+    font-family: MuseoSans500;
+    font-style: normal;
+    font-weight: normal;
+    src: url(museosans_1.otf);
+}
+@font-face {
+    font-family: MuseoSans700Italic;
+    font-style: normal;
+    font-weight: normal;
+    src: url(museosans-700italic.otf);
+}
+@font-face {
+    font-family: SegoeUI;
+    font-style: normal;
+    font-weight: normal;
+    src: url(segoeui.ttf);
+}
+@font-face {
+    font-family: MuseoSans900;
+    font-style: normal;
+    font-weight: normal;
+    src: url(museosans_0.otf);
+}
+@font-face {
+    font-family: MuseoSans700;
+    font-style: normal;
+    font-weight: normal;
+    src: url(museosans.otf);
+}
+
+.fontMuseoSans500 {
+    font-family: "MuseoSans500";
+}
+
+.fontMuseoSans700Italic {
+    font-family: "MuseoSans700Italic";
+}
+
+.fontMuseoSans700 {
+    font-family: "MuseoSans700";
+}
+
+.fontSegoeUI {
+    font-family: "SegoeUI";
+}
+
+.fontMuseoSans900 {
+    font-family: "MuseoSans900";
+}
+
+.infoUs {
+    font-family: "MuseoSans500";
+}

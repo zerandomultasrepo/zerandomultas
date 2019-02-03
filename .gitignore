@@ -3,3 +3,5 @@
 .vEnv
 *pyc
 .env
+media/*
+*.orig

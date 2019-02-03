@@ -31,11 +31,11 @@ from server.views import LoginView
 
 urlpatterns = [
  #   url(r'^', include(router.urls)),
-    url(r'^login$', LoginView.as_view(), name="login"),
+    url(r'^login', LoginView.as_view(), name="login"),
     url(r'^blog$', views.homeBlog),
     url(r'^posts/(?P<post_id>\d+)$', views.post),
     url(r'^ckeditor$', include('ckeditor_uploader.urls')),
-    url(r'^admin$', admin.site.urls),
-    url(r'^api-auth$', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^admin', admin.site.urls),
+    url(r'^api-auth', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^$', TemplateView.as_view(template_name="index.html"), name="login"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

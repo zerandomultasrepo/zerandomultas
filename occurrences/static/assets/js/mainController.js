@@ -46,18 +46,33 @@ $("#plainSelect").on('change', function() {
         $("#lb_planValue").text('0,00');
     }
     if(value == 1){
-        $("#lb_planValue").text('88,38');
+        $("#lb_planValue").text('40,00');
     }
     if(value == 2){
-        $("#lb_planValue").text('130,16');
+        $("#lb_planValue").text('60,00');
     }
     if(value == 3){
-        $("#lb_planValue").text('195,23');
+        $("#lb_planValue").text('100,00');
     }
     if(value == 4){
-        $("#lb_planValue").text('293,47');
+        $("#lb_planValue").text('140,00');
     }
     if(value == 5){
-        $("#lb_planValue").text('293,47');
+        $("#lb_planValue").text('250,00');
+    }
+    if(value == 6){
+        $("#lb_planValue").text('300,00');
+    }
+    if(value == 7){
+        $("#lb_planValue").text('500,00');
+    }
+    if(value == 8){
+        $("#lb_planValue").text('1000,00');
+    }
+    if(value == 9){
+        $("#lb_planValue").text('2500,00');
+    }
+    if(value == 10){
+        $("#lb_planValue").text('5000,00');
     }
 });

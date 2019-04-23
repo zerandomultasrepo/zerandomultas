@@ -46,7 +46,7 @@ body {
   border: 1 !important;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: url('..t_arrow.png') no-repeat;
+  background: url('../img/select_arrow.png') no-repeat;
   background-size: 15px;
   background-position: 95%;
   width: 100%;

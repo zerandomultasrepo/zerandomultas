@@ -27,9 +27,9 @@
                     </li>
                     <li class="nav-item" role="presentation"><a class="nav-link active navLinks fontMuseoSans500" id="lnkFaleConosco">&nbsp;Fale conosco<br></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="https://www.facebook.com/Zerando-Multas-294724874521174" target="_blank"><i class="fa fa-facebook" style="color: #A8CF45;"></i></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="https://www.instagram.com/zerandomultas/" target="_blank"><i class="fa fa-instagram" style="color: #A8CF45;"></i></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="#"><i class="fa fa-twitter" style="color: #A8CF45;"></i></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="#"><i class="fa fa-youtube" style="color: #A8CF45;"></i></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#"><i class="fa fa-rss" style="color: #A8CF45;"></i></a></li>
                 </ul>
         </div>
         </div>
@@ -117,150 +117,154 @@
             </div>
         </div>
     </main>
-    <main id="Cadastro" class="mains">
-        <div class="row no-gutters">
-            <div class="col-12 col-lg-12 offset-lg-0">
-                <div class="row">
-                    <div class="col-12"><img class="img-fluid img-principal" src="{% static "assets/img/img_principal2.png" %}"></div>
+    <form id="resolveMultas" method="POST"></form>
+        <main id="Cadastro" class="mains">
+            <div class="row no-gutters">
+                <div class="col-12 col-lg-12 offset-lg-0">
+                    <div class="row">
+                        <div class="col-12"><img class="img-fluid img-principal" src="{% static "assets/img/img_principal2.png" %}"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row d-inline">
-            <div class="col">
-                <div class="container forms" style="width: 70%;margin: -30% 17%;padding: 0px 15px 20px 15px;">
-                    <p class="lead fontMuseoSans900" style="color: #FFFFFF;font-size: 130%;padding: 10px 0px 0px 0px;"><strong>PREENCHA O FORMULÁRIO ABAIXO</strong></p>
-                    <div id="div_contato" style="background-color: #ffffff;">
-                        <p class="lead fontMuseoSans500" style="font-size: 120%;">As informações contidas nesse formulário são necessárias para nossa equipe elaborar a melhor defesa administrativa para o seu caso. Lembre-se de colocar as informações corretas.</p>
-                        <p class="lead fontMuseoSans500" style="font-size: 120%;">Selecione a categoria da sua multa abaixo e efetue o pagamento. Entraremos em contato e iremos elaborar o seu recurso.</p>
-                        <div class="col">
-                            <div class="row">
-                                <div class="col" style="margin: 20px 0px 10px 0px;"><input type="text" required="" placeholder="NOME" maxlength="120" pattern="[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$" class="input-contact"></div>
-                                <div class="col" style="margin: 20px 0px 10px 0px;">
-                                    <div class="dropdow"><select class="custom-select input-contact" name="plan_selection" id="plainSelect"><option value="0" selected="">ESCOLHA SEU PLANO</option><option value="1">Leve</option>
-                                        <option value="2">Média</option><option value="3">Grave</option><option value="4">Gravíssima</option><option value="5">Gravíssima (2x)</option><option value="6">Gravíssima (3x)</option>
-                                        <option value="7">Gravíssima (5x)</option><option value="8">Gravíssima (10x)</option><option value="9">Gravíssima (20x)</option><option value="10">Gravíssima (60x)</option></select></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col" style="margin: 0px 0px 10px 0px;"><input type="email" placeholder="E-MAIL" class="input-contact"></div>
-                                <div class="col" style="margin: 0px 0px 10px 0px;"><input type="text" placeholder="TELEFONE" id="telefone" class="input-contact"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col text-right">
-                                    <p class="fontMuseoSans500">Valor do Plano escolhido: R$&nbsp;<label id="lb_planValue">0,00</label></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col text-center"><a href="#" style="margin: 0px 0px 0px 10px;;"><img src="{% static "assets/img/bt_resolva_multas_agora.png" %}" style="width: 40%;"></a></div>
-                            </div>
-                            <div class="row">
-                                <div class="col" style="margin: 10px 0px 10px 0px;"><img src="{% static "assets/img/top_border.png" %}" style="width: 90%;">
-                                    <p class="lead fontMuseoSans500" style="padding: 10px 0px 0px 0px;font-size: 120%;">Caso você já tenha assinado, digite seu e-mail e envie sua multa.</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col" style="margin: 0px 0px 10px 0px;"><input type="email" placeholder="E-MAIL" class="input-contact"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col" style="margin: 0px 0px 10px 0px;"><textarea placeholder="DESCRIÇÃO DA MULTA" class="input-contact" style="height: 150px;"></textarea></div>
-                            </div>
-                            <div class="row" style="padding: 0px 0px 10px 0px;">
-                                <div class="col text-center">
-                                    <p class="lead text-left fontMuseoSans500" style="font-size: 130%;">Documentos que precisam ser digitalizados para envio:</p>
-                                </div>
-                            </div>
-                            <div class="row" style="padding: 0px 0px 10px 0px;">
-                                <div class="col text-left">
-                                    <div class="file-upload">
-                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR MULTA </div><div id="noTicketFile" class="file-select-name"></div><input type="file" accept="image/*" name="chooseTicketFile" id="chooseTicketFile"></div>
+            <div class="row d-inline">
+                <div class="col">
+                    <div class="container forms" style="width: 70%;margin: -30% 17%;padding: 0px 15px 20px 15px;">
+                        <p class="lead fontMuseoSans900" style="color: #FFFFFF;font-size: 130%;padding: 10px 0px 0px 0px;"><strong>PREENCHA O FORMULÁRIO ABAIXO</strong></p>
+                        <div id="div_contato" style="background-color: #ffffff;">
+                            <p class="lead fontMuseoSans500" style="font-size: 120%;">As informações contidas nesse formulário são necessárias para nossa equipe elaborar a melhor defesa administrativa para o seu caso. Lembre-se de colocar as informações corretas.</p>
+                            <p class="lead fontMuseoSans500" style="font-size: 120%;">Selecione a categoria da sua multa abaixo e efetue o pagamento. Entraremos em contato e iremos elaborar o seu recurso.</p>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col" style="margin: 20px 0px 10px 0px;"><input type="text" required="" placeholder="NOME" maxlength="120" pattern="[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$" class="input-contact"></div>
+                                    <div class="col" style="margin: 20px 0px 10px 0px;">
+                                        <div class="dropdow"><select class="custom-select input-contact" name="plan_selection" id="plainSelect"><option value="0" selected="">ESCOLHA SEU PLANO</option><option value="1">Leve</option>
+                                            <option value="2">Média</option><option value="3">Grave</option><option value="4">Gravíssima</option><option value="5">Gravíssima (2x)</option><option value="6">Gravíssima (3x)</option>
+                                            <option value="7">Gravíssima (5x)</option><option value="8">Gravíssima (10x)</option><option value="9">Gravíssima (20x)</option><option value="10">Gravíssima (60x)</option></select></div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row" style="padding: 0px 0px 10px 0px;">
-                                <div class="col text-left">
-                                    <div class="file-upload">
-                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR DOCUMENTO DE HABILITAÇÃO </div><div id="noLicenseFile" class="file-select-name"></div><input type="file" accept="image/*" name="chooseTicketFile" id="chooseLicenseFile"></div>
+                                <div class="row">
+                                    <div class="col" style="margin: 0px 0px 10px 0px;"><input type="email" placeholder="E-MAIL" class="input-contact"></div>
+                                    <div class="col" style="margin: 0px 0px 10px 0px;"><input type="text" placeholder="TELEFONE" id="telefone" class="input-contact"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col text-right">
+                                        <p class="fontMuseoSans500">Valor do Plano escolhido: R$&nbsp;<label id="lb_planValue">0,00</label></p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row" style="padding: 0px 0px 10px 0px;">
-                                <div class="col text-left">
-                                    <div class="file-upload">
-                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR CÓPIA DO DUT </div><div id="noDutFile" class="file-select-name"></div><input type="file" accept="image/*" name="chooseTicketFile" id="chooseDutFile"></div>
+                                <div class="row">
+                                    <div class="col text-center"><a href="#" style="margin: 0px 0px 0px 10px;;"><img src="{% static "assets/img/bt_resolva_multas_agora.png" %}" style="width: 40%;"></a></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col" style="margin: 10px 0px 10px 0px;"><img src="{% static "assets/img/top_border.png" %}" style="width: 90%;">
+                                        <p class="lead fontMuseoSans500" style="padding: 10px 0px 0px 0px;font-size: 120%;">Caso você já tenha assinado, digite seu e-mail e envie sua multa.</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row" style="padding: 0px 0px 10px 0px;">
-                                <div class="col text-center" style="padding: 10px 0px 10px 0px;"><a href="#" style="margin: 0px 0px 0px 10px;;"><img src="{% static "assets/img/bt_resolva_multas_agora.png" %}" style="width: 40%;"></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    <main id="Contato" class="mains">
-        <div class="row">
-            <div class="col-12 col-lg-12 offset-lg-0">
-                <div class="row">
-                    <div class="col-12"><img class="img-fluid img-principal" src="{% static "assets/img/img_principal2.png" %}"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="container forms" style="width: 50%;height: 456px;margin: -20% 25%;padding: -166px;">
-                    <p class="fontMuseoSans900" style="color: #FFFFFF;font-size: 130%;padding: 15px 0px 0px 0px;"><strong>CONTATO</strong></p>
-                    <div id="div_contato" style="background-color: #ffffff;">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col" style="margin: 20px 0px 10px 0px;"><input type="text" required="" placeholder="NOME" maxlength="120" pattern="[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$" class="input-contact"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col" style="margin: 0px 0px 10px 0px;"><input type="text" placeholder="TELEFONE" id="telefoneContato" class="input-contact"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col" style="margin: 0px 0px 10px 0px;"><input type="email" placeholder="E-MAIL" class="input-contact"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col" style="margin: 0px 0px 10px 0px;"><textarea placeholder="SUA MENSAGEM" class="input-contact" style="height: 150px;"></textarea></div>
-                            </div>
-                            <div class="row" style="padding: 0px 0px 10px 0px;">
-                                <div class="col text-right"><a href="#" class="navIcons" style="margin: 0px 0px 0px 10px;;"><img class="img-fluid" src="{% static "assets/img/bt_enviar.png" %}" style="width: 15%;"></a></div>
+                                <div class="row">
+                                    <div class="col" style="margin: 0px 0px 10px 0px;"><input type="email" placeholder="E-MAIL" class="input-contact"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col" style="margin: 0px 0px 10px 0px;"><textarea placeholder="DESCRIÇÃO DA MULTA" class="input-contact" style="height: 150px;"></textarea></div>
+                                </div>
+                                <div class="row" style="padding: 0px 0px 10px 0px;">
+                                    <div class="col text-center">
+                                        <p class="lead text-left fontMuseoSans500" style="font-size: 130%;">Documentos que precisam ser digitalizados para envio:</p>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding: 0px 0px 10px 0px;">
+                                    <div class="col text-left">
+                                        <div class="file-upload">
+                                            <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR MULTA </div><div id="noTicketFile" class="file-select-name"></div><input type="file" accept="image/*" name="chooseTicketFile" id="chooseTicketFile"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding: 0px 0px 10px 0px;">
+                                    <div class="col text-left">
+                                        <div class="file-upload">
+                                            <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR DOCUMENTO DE HABILITAÇÃO </div><div id="noLicenseFile" class="file-select-name"></div><input type="file" accept="image/*" name="chooseTicketFile" id="chooseLicenseFile"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding: 0px 0px 10px 0px;">
+                                    <div class="col text-left">
+                                        <div class="file-upload">
+                                            <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR CÓPIA DO DUT </div><div id="noDutFile" class="file-select-name"></div><input type="file" accept="image/*" name="chooseTicketFile" id="chooseDutFile"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding: 0px 0px 10px 0px;">
+                                    <div class="col text-center" style="padding: 10px 0px 10px 0px;"><a href="#" onclick="document.getElementById('resolveMultas').submit();" style="margin: 0px 0px 0px 10px;;"><img src="{% static "assets/img/bt_resolva_multas_agora.png" %}" style="width: 40%;"></a></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-    <main id="Depoimentos" class="mains">
-        <div class="row">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-xl-12 offset-xl-0"><img class="img-fluid img-principal" src="{% static "assets/img/img_principal2.png" %}"></div>
-                </div>
-                <div class="container-fluid" style="margin: -30% 0%;">
+        </main>
+    </form>
+    <form id="contactForm" method="POST">
+        <main id="Contato" class="mains">
+            <div class="row">
+                <div class="col-12 col-lg-12 offset-lg-0">
                     <div class="row">
-                        <div class="col" style="padding: 0px;">
-                            <p class="lead fontMuseoSans700Italic" style="font-size: 200%;">Quer recorrer da sua infração? Nós te ajudamos!</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p class="lead fontMuseoSans700Italic" style="font-size: 150%;margin: -18px -18px 20px;color: white;">Já ajudamos mais de 10 mil motoristas!<br></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col"><img class="img-fluid" src="{% static "assets/img/fluxo_blog.png" %}" style="width: 80%;"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col" style="padding: 40px 0px 0px 0px;"><a href="#"><img class="img-fluid" src="{% static "assets/img/bt_quero_orcamento_principal.png" %}" id="btQueroOrcamento2" style="width: 25%;"></a></div>
+                        <div class="col-12"><img class="img-fluid img-principal" src="{% static "assets/img/img_principal2.png" %}"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+            <div class="row">
+                <div class="col">
+                    <div class="container forms" style="width: 50%;height: 456px;margin: -20% 25%;padding: -166px;">
+                        <p class="fontMuseoSans900" style="color: #FFFFFF;font-size: 130%;padding: 15px 0px 0px 0px;"><strong>CONTATO</strong></p>
+                        <div id="div_contato" style="background-color: #ffffff;">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col" style="margin: 20px 0px 10px 0px;"><input type="text" required="" placeholder="NOME" maxlength="120" pattern="[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$" class="input-contact"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col" style="margin: 0px 0px 10px 0px;"><input type="text" placeholder="TELEFONE" id="telefoneContato" class="input-contact"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col" style="margin: 0px 0px 10px 0px;"><input type="email" placeholder="E-MAIL" class="input-contact"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col" style="margin: 0px 0px 10px 0px;"><textarea placeholder="SUA MENSAGEM" class="input-contact" style="height: 150px;"></textarea></div>
+                                </div>
+                                <div class="row" style="padding: 0px 0px 10px 0px;">
+                                    <div class="col text-right"><a href="#" onclick="document.getElementById('contactForm').submit();" class="navIcons" style="margin: 0px 0px 0px 10px;;"><img class="img-fluid" src="{% static "assets/img/bt_enviar.png" %}" style="width: 15%;"></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </form>
+        <main id="Depoimentos" class="mains">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-xl-12 offset-xl-0"><img class="img-fluid img-principal" src="{% static "assets/img/img_principal2.png" %}"></div>
+                    </div>
+                    <div class="container-fluid" style="margin: -30% 0%;">
+                        <div class="row">
+                            <div class="col" style="padding: 0px;">
+                                <p class="lead fontMuseoSans700Italic" style="font-size: 200%;">Quer recorrer da sua infração? Nós te ajudamos!</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p class="lead fontMuseoSans700Italic" style="font-size: 150%;margin: -18px -18px 20px;color: white;">Já ajudamos mais de 10 mil motoristas!<br></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col"><img class="img-fluid" src="{% static "assets/img/fluxo_blog.png" %}" style="width: 80%;"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="padding: 40px 0px 0px 0px;"><a href="#"><img class="img-fluid" src="{% static "assets/img/bt_quero_orcamento_principal.png" %}" id="btQueroOrcamento2" style="width: 25%;"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     <script src="{% static "assets/js/jquery.min.js" %}"></script>
     <script src="{% static "assets/bootstrap/js/bootstrap.min.js" %}"></script>
     <script src="{% static "assets/js/fileChooser.js" %}"></script>

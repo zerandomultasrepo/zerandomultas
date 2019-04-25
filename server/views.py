@@ -99,7 +99,7 @@ class ContatoView(FormView):
              '[CONTATO] - ZERANDO MULTAS - %s - %s' % (data['nome'], data['telefone']) ,
              data['mensagem'],
              data['email'],
-             ['leo.cc14@gmail.com', 'betinho.fmn@gmail.com'],
+             ['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
              fail_silently=False,
         )
 

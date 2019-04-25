@@ -1,42 +1,42 @@
 $("#lnkComoRecorrer").on('click', function() {
     $("#Principal").hide();
     $("#Cadastro").show();
-    $("#Contato").hide();
+    //$("#Contato").hide();
     $("#Depoimentos").hide();
 });
 
 $("#lnkSobre").on('click', function() {
     $("#Principal").show();
     $("#Cadastro").hide();
-    $("#Contato").hide();
+  //  $("#Contato").hide();
     $("#Depoimentos").hide();
 });
 
 $("#lnkDepoimentos").on('click', function() {
     $("#Principal").hide();
     $("#Cadastro").hide();
-    $("#Contato").hide();
+  //  $("#Contato").hide();
     $("#Depoimentos").show();
 });
 
-$("#lnkFaleConosco").on('click', function() {
-    $("#Principal").hide();
-    $("#Cadastro").hide();
-    $("#Contato").show();
-    $("#Depoimentos").hide();
-});
+// $("#lnkFaleConosco").on('click', function() {
+//     $("#Principal").hide();
+//     $("#Cadastro").hide();
+//     $("#Contato").show();
+//     $("#Depoimentos").hide();
+// });
 
 $("#btQueroOrcamento").on('click', function() {
     $("#Principal").hide();
     $("#Cadastro").show();
-    $("#Contato").hide();
+    //$("#Contato").hide();
     $("#Depoimentos").hide();
 });
 
 $("#btQueroOrcamento2").on('click', function() {
     $("#Principal").hide();
     $("#Cadastro").show();
-    $("#Contato").hide();
+    //$("#Contato").hide();
     $("#Depoimentos").hide();
 });
 

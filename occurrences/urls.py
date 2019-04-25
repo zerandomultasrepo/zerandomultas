@@ -20,6 +20,8 @@ from server import views
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
+from server.views import ContatoView
+
 
 
 admin.autodiscover()
@@ -33,9 +35,11 @@ urlpatterns = [
  #   url(r'^', include(router.urls)),
     url(r'^login', LoginView.as_view(), name="login"),
     url(r'^blog', views.homeBlog),
+    url(r'^fale-conosco', ContatoView.as_view(), name='fale-conosco'),
     url(r'^posts/(?P<post_id>\d+)', views.post),
     url(r'^ckeditor', include('ckeditor_uploader.urls')),
     url(r'^admin', admin.site.urls),
     url(r'^api-auth', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^$', TemplateView.as_view(template_name="index.html"), name="login"),
+    url(r'^test', views.homeBlog),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

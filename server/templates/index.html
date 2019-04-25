@@ -25,7 +25,7 @@
                             <div class="d-block float-right searchInput"><input class="border rounded-0 float-right" type="search" id="search" style="background-color: #BDBFC1;opacity: 0.44;"></div>
                         </a>
                     </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active navLinks fontMuseoSans500" id="lnkFaleConosco">&nbsp;Fale conosco<br></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active fontMuseoSans500" href={% url 'fale-conosco' %} id="lnkFaleConosco">&nbsp;Fale conosco<br></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="https://www.facebook.com/Zerando-Multas-294724874521174" target="_blank"><i class="fa fa-facebook" style="color: #A8CF45;"></i></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="https://www.instagram.com/zerandomultas/" target="_blank"><i class="fa fa-instagram" style="color: #A8CF45;"></i></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="#"><i class="fa fa-twitter" style="color: #A8CF45;"></i></a></li>
@@ -40,6 +40,7 @@
                 <div class="row">
                     <div class="col-12"><img class="img-fluid img-principal" src="{% static "assets/img/img_principal2.png" %}"></div>
                 </div>
+                {% block mainContainer %}
                 <div class="container" style="margin: -25% 0% 4% 0%;"><img class="img-fluid" src="{% static "assets/img/nao_fique_sem_dirigir.png" %}" id="notDrive" style="width: 70%;opacity: 1;filter: blur(0px);"></div>
                 <div class="container-fluid" style="background-color: #ffffff;">
                     <div class="row no-gutters d-table">
@@ -116,7 +117,9 @@
                 </div>
             </div>
         </div>
+        {% endblock %}
     </main>
+    {% block cadastro %}
     <form id="resolveMultas" method="POST"></form>
         <main id="Cadastro" class="mains">
             <div class="row no-gutters">
@@ -201,43 +204,10 @@
             </div>
         </main>
     </form>
-    <form id="contactForm" method="POST">
-        <main id="Contato" class="mains">
-            <div class="row">
-                <div class="col-12 col-lg-12 offset-lg-0">
-                    <div class="row">
-                        <div class="col-12"><img class="img-fluid img-principal" src="{% static "assets/img/img_principal2.png" %}"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="container forms" style="width: 50%;height: 456px;margin: -20% 25%;padding: -166px;">
-                        <p class="fontMuseoSans900" style="color: #FFFFFF;font-size: 130%;padding: 15px 0px 0px 0px;"><strong>CONTATO</strong></p>
-                        <div id="div_contato" style="background-color: #ffffff;">
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col" style="margin: 20px 0px 10px 0px;"><input type="text" required="" placeholder="NOME" maxlength="120" pattern="[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$" class="input-contact"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col" style="margin: 0px 0px 10px 0px;"><input type="text" placeholder="TELEFONE" id="telefoneContato" class="input-contact"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col" style="margin: 0px 0px 10px 0px;"><input type="email" placeholder="E-MAIL" class="input-contact"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col" style="margin: 0px 0px 10px 0px;"><textarea placeholder="SUA MENSAGEM" class="input-contact" style="height: 150px;"></textarea></div>
-                                </div>
-                                <div class="row" style="padding: 0px 0px 10px 0px;">
-                                    <div class="col text-right"><a href="#" onclick="document.getElementById('contactForm').submit();" class="navIcons" style="margin: 0px 0px 0px 10px;;"><img class="img-fluid" src="{% static "assets/img/bt_enviar.png" %}" style="width: 15%;"></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </form>
+    {% endblock %}
+    {% block contato %}
+    {% endblock %}
+    {% block depoimento %}
         <main id="Depoimentos" class="mains">
             <div class="row">
                 <div class="col-12">
@@ -265,6 +235,7 @@
                 </div>
             </div>
         </main>
+    {% endblock %}
     <script src="{% static "assets/js/jquery.min.js" %}"></script>
     <script src="{% static "assets/bootstrap/js/bootstrap.min.js" %}"></script>
     <script src="{% static "assets/js/fileChooser.js" %}"></script>

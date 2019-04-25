@@ -150,3 +150,10 @@ JWT_AUTH = {
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
 }
+
+DEFAULT_FROM_EMAIL = "user@gmail.com"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "contatozerandomultas@gmail.com"
+EMAIL_HOST_PASSWORD = "altere123"
+EMAIL_USE_TLS = True

@@ -1,20 +1,20 @@
-$("#lnkComoRecorrer").on('click', function() {
-    $("#Principal").hide();
-    $("#Cadastro").show();
-    //$("#Contato").hide();
-    $("#Depoimentos").hide();
-});
+// $("#lnkComoRecorrer").on('click', function() {
+//     $("#Principal").hide();
+//     $("#Cadastro").show();
+//     //$("#Contato").hide();
+//     $("#Depoimentos").hide();
+// });
 
 $("#lnkSobre").on('click', function() {
     $("#Principal").show();
-    $("#Cadastro").hide();
+  //  $("#Cadastro").hide();
   //  $("#Contato").hide();
     $("#Depoimentos").hide();
 });
 
 $("#lnkDepoimentos").on('click', function() {
     $("#Principal").hide();
-    $("#Cadastro").hide();
+  //  $("#Cadastro").hide();
   //  $("#Contato").hide();
     $("#Depoimentos").show();
 });
@@ -26,19 +26,19 @@ $("#lnkDepoimentos").on('click', function() {
 //     $("#Depoimentos").hide();
 // });
 
-$("#btQueroOrcamento").on('click', function() {
-    $("#Principal").hide();
-    $("#Cadastro").show();
-    //$("#Contato").hide();
-    $("#Depoimentos").hide();
-});
+// $("#btQueroOrcamento").on('click', function() {
+//     $("#Principal").hide();
+//     $("#Cadastro").show();
+//     //$("#Contato").hide();
+//     $("#Depoimentos").hide();
+// });
 
-$("#btQueroOrcamento2").on('click', function() {
-    $("#Principal").hide();
-    $("#Cadastro").show();
-    //$("#Contato").hide();
-    $("#Depoimentos").hide();
-});
+// $("#btQueroOrcamento2").on('click', function() {
+//     $("#Principal").hide();
+//     $("#Cadastro").show();
+//     //$("#Contato").hide();
+//     $("#Depoimentos").hide();
+// });
 
 $("#plainSelect").on('change', function() {
     var value = this.value;

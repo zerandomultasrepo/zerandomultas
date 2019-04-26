@@ -20,7 +20,7 @@ from server import views
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
-from server.views import ContatoView
+from server.views import ContatoView, CadastroView
 
 
 
@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'^login', LoginView.as_view(), name="login"),
     url(r'^blog', views.homeBlog),
     url(r'^fale-conosco', ContatoView.as_view(), name='fale-conosco'),
+    url(r'^cadastro', CadastroView.as_view(), name='cadastro'),
     url(r'^posts/(?P<post_id>\d+)', views.post),
     url(r'^ckeditor', include('ckeditor_uploader.urls')),
     url(r'^admin', admin.site.urls),

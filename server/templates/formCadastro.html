@@ -1,0 +1,78 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block mainContainer %}
+ <form id="resolveMultas" method="POST"></form>
+        {% csrf_token %}
+        <div class="row d-inline">
+            <div class="col">
+                <div class="container forms" style="width: 70%;margin: -30% 17%;padding: 0px 15px 20px 15px;">
+                    <p class="lead fontMuseoSans900" style="color: #FFFFFF;font-size: 130%;padding: 10px 0px 0px 0px;"><strong>PREENCHA O FORMULÁRIO ABAIXO</strong></p>
+                    <div id="div_contato" style="background-color: #ffffff;">
+                        <p class="lead fontMuseoSans500" style="font-size: 120%;">As informações contidas nesse formulário são necessárias para nossa equipe elaborar a melhor defesa administrativa para o seu caso. Lembre-se de colocar as informações corretas.</p>
+                        <p class="lead fontMuseoSans500" style="font-size: 120%;">Selecione a categoria da sua multa abaixo e efetue o pagamento. Entraremos em contato e iremos elaborar o seu recurso.</p>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col" style="margin: 20px 0px 10px 0px;">{{form.nome}}</div>
+                                <div class="col" style="margin: 20px 0px 10px 0px;">
+                                    <div class="dropdow">{{form.plan_selection}}</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col" style="margin: 0px 0px 10px 0px;">{{form.email}}</div>
+                                <div class="col" style="margin: 0px 0px 10px 0px;">{{form.telefone}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-right">
+                                    <p class="fontMuseoSans500">Valor do Plano escolhido: R$&nbsp;<label id="lb_planValue">0,00</label></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center"><a href="#" style="margin: 0px 0px 0px 10px;;"><img src="{% static "assets/img/bt_resolva_multas_agora.png" %}" style="width: 40%;"></a></div>
+                            </div>
+                            <div class="row">
+                                <div class="col" style="margin: 10px 0px 10px 0px;"><img src="{% static "assets/img/top_border.png" %}" style="width: 90%;">
+                                    <p class="lead fontMuseoSans500" style="padding: 10px 0px 0px 0px;font-size: 120%;">Caso você já tenha assinado, digite seu e-mail e envie sua multa.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col" style="margin: 0px 0px 10px 0px;">{{form.email}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col" style="margin: 0px 0px 10px 0px;">{{form.descricao}}</div>
+                            </div>
+                            <div class="row" style="padding: 0px 0px 10px 0px;">
+                                <div class="col text-center">
+                                    <p class="lead text-left fontMuseoSans500" style="font-size: 130%;">Documentos que precisam ser digitalizados para envio:</p>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 0px 0px 10px 0px;">
+                                <div class="col text-left">
+                                    <div class="file-upload">
+                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR MULTA </div><div id="noTicketFile" class="file-select-name"></div><input type="file" accept="image/*" name="chooseTicketFile" id="chooseTicketFile"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 0px 0px 10px 0px;">
+                                <div class="col text-left">
+                                    <div class="file-upload">
+                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR DOCUMENTO DE HABILITAÇÃO </div><div id="noLicenseFile" class="file-select-name"></div><input type="file" accept="image/*" name="chooseTicketFile" id="chooseLicenseFile"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 0px 0px 10px 0px;">
+                                <div class="col text-left">
+                                    <div class="file-upload">
+                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR CÓPIA DO DUT </div><div id="noDutFile" class="file-select-name"></div><input type="file" accept="image/*" name="chooseTicketFile" id="chooseDutFile"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 0px 0px 10px 0px;">
+                                <div class="col text-center" style="padding: 10px 0px 10px 0px;"><a href="#" onclick="document.forms['resolveMultas'].submit();" style="margin: 0px 0px 0px 10px;;"><img src="{% static "assets/img/bt_resolva_multas_agora.png" %}" style="width: 40%;"></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -8,7 +8,7 @@ from rest_framework.permissions import BasePermission, IsAuthenticatedOrReadOnly
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework_jwt.views import ObtainJSONWebToken
 
-from server.forms import FormContato
+from server.forms import FormContato, FormCadastro
 from server.models import Occurrence, Post
 from server.serializers import OccurrenceSerializer
 
@@ -66,8 +66,6 @@ class ContatoView(FormView):
     form_class = FormContato
     success_url = '/'
 
-    print("AQUIIII")
-
     def post(self, request, *args, **kwargs):
         """
         Realiza tratamento da data antes da validação do formulário.
@@ -90,14 +88,9 @@ class ContatoView(FormView):
         Este método adiciona uma nova atividade no banco de dados.
         """
         data = form.cleaned_data
-        print()
-        print(data['telefone'])
-        print(data['email'])
-        print(data['mensagem'])
-
         send_mail(
              '[CONTATO] - ZERANDO MULTAS - %s - %s' % (data['nome'], data['telefone']) ,
-             data['mensagem'],
+             data['mensagem'] + "/n Contato do Cliente /n" + data['email'],
              data['email'],
              ['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
              fail_silently=False,
@@ -108,3 +101,43 @@ class ContatoView(FormView):
     def form_invalid(self, form):
         print (form.errors)
 
+
+class CadastroView(FormView):
+    template_name = 'formCadastro.html'
+    form_class = FormCadastro
+    success_url = '/'
+
+    def post(self, request, *args, **kwargs):
+        """
+        Realiza tratamento da data antes da validação do formulário.
+        """
+        data = request.POST
+
+        my_dict = {}
+        for key in data:
+            my_dict[key] = data[key]
+
+        form = FormContato(my_dict)
+
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        """
+        Este método adiciona uma nova atividade no banco de dados.
+        """
+        # data = form.cleaned_data
+        # send_mail(
+        #     '[CONTATO] - ZERANDO MULTAS - %s - %s' % (data['nome'], data['telefone']),
+        #     data['mensagem'] + "/n Contato do Cliente /n" + data['email'],
+        #     data['email'],
+        #     ['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
+        #     fail_silently=False,
+        # )
+
+        return super(CadastroViewView, self).form_valid(form)
+
+    def form_invalid(self, form):
+        print (form.errors)

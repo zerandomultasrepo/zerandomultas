@@ -1,15 +1,21 @@
 # -*- coding: utf-8 -*-
 from django import forms
 
+from server.models import Occurrence
+
 
 class FormContato(forms.Form):
     """
     Formulário de contato
     """
-    nome = forms.CharField(max_length=120, widget=forms.TextInput(attrs={'class': 'input-contact', 'style':'margin: 20px 0px 10px 0px;', 'placeholder':  'NOME' }))
-    telefone = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'TELEFONE', 'id':'telefoneContato', 'class': 'input-contact' }))
-    email = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'E-MAIL', 'id':'emailContato', 'class': 'input-contact', 'type':'email' }))
-    mensagem = forms.CharField(widget=forms.Textarea(attrs={'placeholder':'SUA MENSAGEM', 'class':'input-contact', 'style':'height: 150px;'}))
+    nome = forms.CharField(max_length=120, widget=forms.TextInput(
+        attrs={'class': 'input-contact', 'style': 'margin: 20px 0px 10px 0px;', 'placeholder': 'NOME'}))
+    telefone = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'class': 'input-contact'}))
+    email = forms.CharField(widget=forms.TextInput(
+        attrs={'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'type': 'email'}))
+    mensagem = forms.CharField(widget=forms.Textarea(
+        attrs={'placeholder': 'SUA MENSAGEM', 'class': 'input-contact', 'style': 'height: 150px;'}))
 
 
 PLAN_SELECTION = (
@@ -27,22 +33,31 @@ PLAN_SELECTION = (
 )
 
 
-class FormCadastro(forms.Form):
+class FormCadastro(forms.ModelForm):
     """
     Formulário de cadastro
     """
-    nome = forms.CharField(max_length=120, widget=forms.TextInput(
-        attrs={'placeholder':'NOME', 'pattern':'[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'class':'input-contact'}))
-    email = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'type': 'email'}))
-    telefone = forms.CharField(
-        widget=forms.TextInput(attrs={'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'class': 'input-contact'}))
-    plan_selection = forms.ChoiceField(choices = PLAN_SELECTION, label="plan_selection", initial='0', widget=forms.Select(attrs={'class':'custom-select input-contact', 'id':'plainSelect'}), required=True)
-    descricao = forms.CharField(widget=forms.Textarea(
-        attrs={'placeholder': 'DESCRIÇÃO DA MULTA', 'class': 'input-contact', 'style': 'height: 150px;'}))
 
-    """
-    <select class="custom-select input-contact" name="plan_selection" id="plainSelect"><option value="0" selected="">ESCOLHA SEU PLANO</option><option value="1">Leve</option>
-                                        <option value="2">Média</option><option value="3">Grave</option><option value="4">Gravíssima</option><option value="5">Gravíssima (2x)</option><option value="6">Gravíssima (3x)</option>
-                                        <option value="7">Gravíssima (5x)</option><option value="8">Gravíssima (10x)</option><option value="9">Gravíssima (20x)</option><option value="10">Gravíssima (60x)</option></select>
-    """
+    class Meta:
+        model = Occurrence
+        fields = [
+            'name',
+            'email',
+            'phone',
+            'description',
+            'traffic_ticket',
+            'drivers_licence',
+            'dut_copy'
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update(
+            {'placeholder': 'NOME', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'class': 'input-contact'})
+        self.fields['email'].widget.attrs.update(
+            {'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'type': 'email'})
+        self.fields['phone'].widget.attrs.update(
+            {'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'class': 'input-contact'})
+        self.fields['description'].widget.attrs.update(
+            {'placeholder': 'DESCRIÇÃO DA MULTA', 'class': 'input-contact', 'style': 'height: 150px;'})
+

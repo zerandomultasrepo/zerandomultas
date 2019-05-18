@@ -117,7 +117,7 @@ class CadastroView(FormView):
         for key in data:
             my_dict[key] = data[key]
 
-        form = FormContato(my_dict)
+        form = FormCadastro(my_dict, request.FILES)
 
         if form.is_valid():
             return self.form_valid(form)
@@ -128,16 +128,9 @@ class CadastroView(FormView):
         """
         Este método adiciona uma nova atividade no banco de dados.
         """
-        # data = form.cleaned_data
-        # send_mail(
-        #     '[CONTATO] - ZERANDO MULTAS - %s - %s' % (data['nome'], data['telefone']),
-        #     data['mensagem'] + "/n Contato do Cliente /n" + data['email'],
-        #     data['email'],
-        #     ['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
-        #     fail_silently=False,
-        # )
+        form.save()
 
-        return super(CadastroViewView, self).form_valid(form)
+        return super(CadastroView, self).form_valid(form)
 
     def form_invalid(self, form):
         print (form.errors)

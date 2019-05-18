@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 {% load staticfiles %}
 {% block mainContainer %}
- <form id="resolveMultas" method="POST"></form>
+ <form id="resolveMultas" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row d-inline">
             <div class="col">
@@ -12,14 +12,16 @@
                         <p class="lead fontMuseoSans500" style="font-size: 120%;">Selecione a categoria da sua multa abaixo e efetue o pagamento. Entraremos em contato e iremos elaborar o seu recurso.</p>
                         <div class="col">
                             <div class="row">
-                                <div class="col" style="margin: 20px 0px 10px 0px;">{{form.nome}}</div>
+                                <div class="col" style="margin: 20px 0px 10px 0px;">{{form.name}}</div>
                                 <div class="col" style="margin: 20px 0px 10px 0px;">
-                                    <div class="dropdow">{{form.plan_selection}}</div>
+                                    <div class="dropdow"><select class="custom-select input-contact" name="plan_selection" id="plainSelect"><option value="0" selected="">ESCOLHA SEU PLANO</option><option value="1">Leve</option>
+                                        <option value="2">Média</option><option value="3">Grave</option><option value="4">Gravíssima</option><option value="5">Gravíssima (2x)</option><option value="6">Gravíssima (3x)</option>
+                                        <option value="7">Gravíssima (5x)</option><option value="8">Gravíssima (10x)</option><option value="9">Gravíssima (20x)</option><option value="10">Gravíssima (60x)</option></select></div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col" style="margin: 0px 0px 10px 0px;">{{form.email}}</div>
-                                <div class="col" style="margin: 0px 0px 10px 0px;">{{form.telefone}}</div>
+                                <div class="col" style="margin: 0px 0px 10px 0px;">{{form.phone}}</div>
                             </div>
                             <div class="row">
                                 <div class="col text-right">
@@ -38,7 +40,7 @@
                                 <div class="col" style="margin: 0px 0px 10px 0px;">{{form.email}}</div>
                             </div>
                             <div class="row">
-                                <div class="col" style="margin: 0px 0px 10px 0px;">{{form.descricao}}</div>
+                                <div class="col" style="margin: 0px 0px 10px 0px;">{{form.description}}</div>
                             </div>
                             <div class="row" style="padding: 0px 0px 10px 0px;">
                                 <div class="col text-center">
@@ -48,21 +50,21 @@
                             <div class="row" style="padding: 0px 0px 10px 0px;">
                                 <div class="col text-left">
                                     <div class="file-upload">
-                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR MULTA </div><div id="noTicketFile" class="file-select-name"></div><input type="file" accept="image/*" name="chooseTicketFile" id="chooseTicketFile"></div>
+                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR MULTA </div><div id="noTicketFile" class="file-select-name"></div>{{ form.traffic_ticket }}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row" style="padding: 0px 0px 10px 0px;">
                                 <div class="col text-left">
                                     <div class="file-upload">
-                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR DOCUMENTO DE HABILITAÇÃO </div><div id="noLicenseFile" class="file-select-name"></div><input type="file" accept="image/*" name="chooseTicketFile" id="chooseLicenseFile"></div>
+                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR DOCUMENTO DE HABILITAÇÃO </div><div id="noLicenseFile" class="file-select-name"></div>{{ form.drivers_licence }}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row" style="padding: 0px 0px 10px 0px;">
                                 <div class="col text-left">
                                     <div class="file-upload">
-                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR CÓPIA DO DUT </div><div id="noDutFile" class="file-select-name"></div><input type="file" accept="image/*" name="chooseTicketFile" id="chooseDutFile"></div>
+                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR CÓPIA DO DUT </div><div id="noDutFile" class="file-select-name"></div>{{ form.dut_copy }}</div>
                                     </div>
                                 </div>
                             </div>

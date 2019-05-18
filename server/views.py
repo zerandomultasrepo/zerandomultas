@@ -1,4 +1,6 @@
-from django.core.mail import send_mail
+import os
+from django.conf import settings
+from django.core.mail import send_mass_mail, EmailMessage
 from django.views.generic import FormView
 from django.shortcuts import render
 
@@ -12,6 +14,7 @@ from server.forms import FormContato, FormCadastro
 from server.models import Occurrence, Post
 from server.serializers import OccurrenceSerializer
 
+
 SAFE_METHODS = ('POST', 'HEAD', 'OPTIONS')
 
 
@@ -19,9 +22,11 @@ def homeBlog(request):
     posts = Post.objects.all()
     return render(request, 'homeBlog.html', {'posts': posts})
 
+
 def post(request, post_id):
     post = Post.objects.get(pk=post_id)
     return render(request, 'postBlog.html', {'post': post})
+
 
 class IsAuthenticatedOrCreate(BasePermission):
     """
@@ -61,6 +66,7 @@ class OccurrenceViewSet(viewsets.ModelViewSet):
     authentication_classes = (JSONWebTokenAuthentication,)
     permission_classes = (IsAuthenticatedOrCreate,)
 
+
 class ContatoView(FormView):
     template_name = 'formContato.html'
     form_class = FormContato
@@ -88,18 +94,18 @@ class ContatoView(FormView):
         Este método adiciona uma nova atividade no banco de dados.
         """
         data = form.cleaned_data
-        send_mail(
-             '[CONTATO] - ZERANDO MULTAS - %s - %s' % (data['nome'], data['telefone']) ,
-             data['mensagem'] + "/n Contato do Cliente /n" + data['email'],
-             data['email'],
-             ['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
-             fail_silently=False,
+        send_mass_mail(
+            '[CONTATO] - ZERANDO MULTAS - %s - %s' % (data['nome'], data['telefone']),
+            data['mensagem'] + "/n Contato do Cliente /n" + data['email'],
+            data['email'],
+            ['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
+            fail_silently=False,
         )
 
         return super(ContatoView, self).form_valid(form)
 
     def form_invalid(self, form):
-        print (form.errors)
+        print(form.errors)
 
 
 class CadastroView(FormView):
@@ -116,7 +122,7 @@ class CadastroView(FormView):
         my_dict = {}
         for key in data:
             my_dict[key] = data[key]
-
+        print (request.FILES)
         form = FormCadastro(my_dict, request.FILES)
 
         if form.is_valid():
@@ -129,8 +135,27 @@ class CadastroView(FormView):
         Este método adiciona uma nova atividade no banco de dados.
         """
         form.save()
+        data = form.cleaned_data
+
+        message = data['description'] + "'/n' Contato do Cliente '/n'" + data['email'];
+        email = EmailMessage(subject='[OCORRENCIA] - ZERANDO MULTAS - %s - %s' % (data['name'], data['phone']),
+                             body=message,
+                             from_email=data['email'],
+                             to=['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
+                             # ['bcc@example.com'],
+                             reply_to=['zerandomultas@gmail.com'],
+                             headers={'Message-ID': 'Ocorrencia'}, )
+
+        trafic_ticket = data['traffic_ticket'].name.replace(" ", "_")
+        drivers_licence = data['drivers_licence'].name.replace(" ", "_")
+        dut_copy = data['dut_copy'].name.replace(" ", "_")
+        email.attach_file(os.path.join(settings.MEDIA_ROOT,'ocorrencia/'+ data['email'] + '/' + trafic_ticket))
+        email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/'+ data['email'] + '/'+ drivers_licence))
+        email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/'+ data['email'] + '/'+ dut_copy))
+
+        email.send()
 
         return super(CadastroView, self).form_valid(form)
 
     def form_invalid(self, form):
-        print (form.errors)
+        print(form.errors)

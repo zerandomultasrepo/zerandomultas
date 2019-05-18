@@ -1,3 +1,4 @@
+import os
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
@@ -8,16 +9,23 @@ class Occurrence(models.Model):
     """
     This class represents a Occurrence.
     """
+
+    def get_upload_path(self, filename):
+        return os.path.join(
+            "ocorrencia/" + self.email + "/", filename)
+
     name = models.CharField(max_length=120)
     email = models.EmailField()
     plan = models.CharField(max_length=30)
     phone = models.CharField(max_length=20)
     description = models.TextField(blank=True)
-    traffic_ticket = models.ImageField(null=True, blank=True, upload_to="ocorrencia/teste/")
-    drivers_licence = models.ImageField(null=True, blank=True, upload_to="ocorrencia/teste/")
-    dut_copy = models.ImageField(null=True, blank=True, upload_to="ocorrencia/teste/")
+    traffic_ticket = models.ImageField(null=True, blank=True, upload_to=get_upload_path)
+    drivers_licence = models.ImageField(null=True, blank=True, upload_to=get_upload_path)
+    dut_copy = models.ImageField(null=True, blank=True, upload_to=get_upload_path)
     paid = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.email
 
 class Post(models.Model):
     """

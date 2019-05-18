@@ -60,4 +60,10 @@ class FormCadastro(forms.ModelForm):
             {'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'class': 'input-contact'})
         self.fields['description'].widget.attrs.update(
             {'placeholder': 'DESCRIÇÃO DA MULTA', 'class': 'input-contact', 'style': 'height: 150px;'})
+        self.fields['traffic_ticket'].widget.attrs.update(
+            {'id': 'chooseTicketFile'})
+        self.fields['drivers_licence'].widget.attrs.update(
+            {'id': 'chooseLicenseFile'})
+        self.fields['dut_copy'].widget.attrs.update(
+            {'id': 'chooseDutFile'})
 

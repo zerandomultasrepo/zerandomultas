@@ -21,22 +21,23 @@
         </div>
     </div>
     <div class="col-8" id="ContentBlog">
+        {% for post in posts %}
         <div class="row">
             <div class="col-auto d-none d-md-flex mx-auto justify-content-md-center align-items-md-start"><img class="img-fluid imgBlog" src="{% static "assets/img/images.png" %}"></div>
             <div class="col colNews">
                 <div class="row">
                     <div class="col d-block">
-                        <p class="noticeTitle" face="MuseoSans500"><strong>Como Recorrer de Uma Multa Indevida?</strong></p>
+                        <p class="noticeTitle" face="MuseoSans500"><strong>{{ post.title }}</strong></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 d-block">
-                        <p class="text-left d-flex" face="MuseoSans500">Talvez você não acredite, mas são muitos os casos que recebo em que ficam bastante claros os erros cometidos pelos órgãos, desde o momento em que o agente de trânsito aplica a penalidade ao motorista até a hora em que o condutor
-                            é notificado em seu endereço.</p>
+                        <p class="text-left d-flex" face="MuseoSans500">{{ post.content|safe }}</p>
                     </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 </main>
 {% endblock %}

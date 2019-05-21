@@ -20,8 +20,8 @@
             </div>
         </div>
     </div>
+    {% for post in posts %}
     <div class="col-8" id="ContentBlog">
-        {% for post in posts %}
         <div class="row">
             <div class="col-auto d-none d-md-flex mx-auto justify-content-md-center align-items-md-start"><img class="img-fluid imgBlog" src="{% static "assets/img/images.png" %}"></div>
             <div class="col colNews">
@@ -32,12 +32,12 @@
                 </div>
                 <div class="row">
                     <div class="col-12 d-block">
-                        <p class="text-left d-flex" face="MuseoSans500">{{ post.content|safe }}</p>
+                        <p class="text-left d-flex noticeContent" face="MuseoSans500">{{ post.content|safe }}</p>
                     </div>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
 </main>
 {% endblock %}

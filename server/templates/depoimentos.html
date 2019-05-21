@@ -29,4 +29,27 @@
         </div>
     </div>
 </main>
+<footer id="footerDepoimentos">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col colComentarios">
+                <p class="text-center fontMuseoSans900" style="color: white;"><strong>DEIXE SEU DEPOIMENTO</strong><br></p>
+            </div>
+        </div>
+    </div>
+    <form id="formComentarios" method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="col" style="margin: 10px 0px 10px 0px;"><input class="form-control input-contact" type="text" placeholder="Nome"></div>
+        </div>
+        <div class="form-row">
+            <div class="col" style="margin: 0px 0px 10px 0px;"><input class="form-control input-contact" type="email" placeholder="E-mail"></div>
+        </div>
+        <div class="form-row">
+            <div class="col" style="margin: 0px 0px 10px 0px;"><textarea class="form-control input-contact" style="height: 150px;" placeholder="Depoimento"></textarea></div>
+        </div>
+        <div class="form-row" style="padding: 0px 0px 10px 0px;">
+            <div class="col text-right"><a class="navIcons" href=""><img class="img-fluid" id="btEnviarContato" src="{% static "assets/img/bt_enviar.png" %}"></a></div>
+        </div>
+    </form>
+</footer>
 {% endblock %}

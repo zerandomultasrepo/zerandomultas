@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     {% load static %}
 <head>
     <meta charset="utf-8">
@@ -15,7 +14,7 @@
 
 <body class="text-center">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top clean-navbar border-bottom-gradient">
-        <div class="container"><a class="navbar-brand" style="width: 5%;"><img class="logoPrincipal" src="{% static "assets/img/logo_zerando_multas.png" %}"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" style="width: 5%;" href={% url 'login'%}><img class="logoPrincipal" src="{% static "assets/img/logo_zerando_multas.png" %}"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">

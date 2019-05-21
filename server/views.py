@@ -24,7 +24,7 @@ def homeBlog(request):
 
 def depoimentos(request):
     posts = Post.objects.all()
-    return render(request, 'depoimentos.html')
+    return render(request, 'depoimentos.html', {'posts':posts})
 
 def post(request, post_id):
     post = Post.objects.get(pk=post_id)

@@ -65,5 +65,5 @@ class FormCadastro(forms.ModelForm):
         self.fields['drivers_licence'].widget.attrs.update(
             {'id': 'chooseLicenseFile'})
         self.fields['dut_copy'].widget.attrs.update(
-            {'id': 'chooseDutFile'})
+            {'id': 'chooseDutFile', 'name': ''})
 

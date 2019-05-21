@@ -26,6 +26,13 @@ def depoimentos(request):
     posts = Post.objects.all()
     return render(request, 'depoimentos.html', {'posts':posts})
 
+def successful(request):
+    posts = Post.objects.all()
+    return render(request, 'payment-successful.html')
+
+def processing(request):
+    return render(request, 'payment-processing.html')
+
 def post(request, post_id):
     post = Post.objects.get(pk=post_id)
     return render(request, 'postBlog.html', {'post': post})

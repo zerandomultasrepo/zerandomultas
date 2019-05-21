@@ -36,6 +36,8 @@ urlpatterns = [
     url(r'^login', LoginView.as_view(), name="login"),
     url(r'^blog', views.homeBlog, name='blog'),
     url(r'^depoimentos', views.depoimentos, name='depoimentos'),
+    url(r'^payment-successful', views.successful, name='payment-successful'),
+    url(r'^payment-processing', views.processing, name='payment-processing'),
     url(r'^fale-conosco', ContatoView.as_view(), name='fale-conosco'),
     url(r'^cadastro', CadastroView.as_view(), name='cadastro'),
     url(r'^posts/(?P<post_id>\d+)', views.post),

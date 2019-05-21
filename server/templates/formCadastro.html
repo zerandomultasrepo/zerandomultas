@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col text-center"><a style="margin: 0px 0px 0px 10px;"><img id="btEfetuarPagamento" src="{% static "assets/img/bt_efetuar_pagamento.png" %}"></a></div>
+                                <div class="col text-center"><a id="linkPagamento" style="margin: 0px 0px 0px 10px;"><img id="btEfetuarPagamento" src="{% static "assets/img/bt_efetuar_pagamento.png" %}"></a></div>
                             </div>
                             <div class="form-row">
                                 <div class="col" style="margin: 10px 0px 10px 0px;"><img style="width: 90%;" src="{% static "assets/img/top_border.png" %}">
@@ -101,5 +101,29 @@
             </div>
         </div>
     </form>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalPaymentSuccessful">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Status do pagamento</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <p style="color: #008000;">Pagamento realizado com sucesso!</p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalPaymentProcessing">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Status do pagamento</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <p style="color: #0000FF;">Seu pagamento está sendo processado. Aguarde...</p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
 </main>
 {% endblock %}

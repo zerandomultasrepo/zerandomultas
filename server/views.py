@@ -20,8 +20,11 @@ SAFE_METHODS = ('POST', 'HEAD', 'OPTIONS')
 
 def homeBlog(request):
     posts = Post.objects.all()
-    return render(request, 'homeBlog.html', {'posts': posts})
+    return render(request, 'blog.html', {'posts': posts})
 
+def depoimentos(request):
+    posts = Post.objects.all()
+    return render(request, 'depoimentos.html')
 
 def post(request, post_id):
     post = Post.objects.get(pk=post_id)

@@ -1,34 +1,29 @@
 <!DOCTYPE html>
 <html>
-{% load static %}
+    {% load static %}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>ZerandoMultas</title>
+    <title>Zerando Multas</title>
     <link rel="stylesheet" href="{% static "assets/bootstrap/css/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="{% static "assets/fonts/font-awesome.min.css" %}">
     <link rel="stylesheet" href="{% static "assets/fonts/fonts.css" %}">
-    <link rel="stylesheet" href="{% static "assets/css/styles.css" %}">
-    <link rel="stylesheet" href="{% static "assets/css/responsive.css" %}">
+    <link rel="stylesheet" href="{% static "assets/fonts/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/styles.min.css" %}">
 </head>
 
 <body class="text-center">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top clean-navbar border-bottom-gradient">
-        <div class="container"><a class="navbar-brand" href="#" style="width: 5%;"><img class="minRes" src="{% static "assets/img/logo_zerando_multas.png" %}"></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" style="width: 5%;"><img class="logoPrincipal" src="{% static "assets/img/logo_zerando_multas.png" %}"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active navLinks fontMuseoSans500" id="lnkSobre" href={% url 'login'%}>Sobre</a></li>
+                    <li class="nav-item navIcons" role="presentation"><a class="nav-link active navLinks fontMuseoSans500" id="lnkSobre" href={% url 'login'%}>Sobre</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active navLinks fontMuseoSans500" id="lnkComoRecorrer" href={% url 'cadastro'%}>Como recorrer</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active navLinks fontMuseoSans500" id="lnkDepoimentos">Depoimentos</a></li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" href="#">
-                            <div class="d-block float-right searchInput"><input class="border rounded-0 float-right" type="search" id="search" style="background-color: #BDBFC1;opacity: 0.44;"></div>
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active fontMuseoSans500" href={% url 'fale-conosco' %} id="lnkFaleConosco">&nbsp;Fale conosco<br></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="https://www.facebook.com/Zerando-Multas-294724874521174" target="_blank"><i class="fa fa-facebook" style="color: #A8CF45;"></i></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="https://www.instagram.com/zerandomultas/" target="_blank"><i class="fa fa-instagram" style="color: #A8CF45;"></i></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active navLinks fontMuseoSans500" href={% url 'blog' %}>Blog</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active navLinks fontMuseoSans500" id="lnkDepoimentos" href={% url 'depoimentos' %}>Depoimentos</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active navLinks fontMuseoSans500" id="lnkFaleConosco"  href={% url 'fale-conosco' %}>&nbsp;Fale conosco<br></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="www.facebook.com/Zerando-Multas-294724874521174" target="_blank"><i class="fa fa-facebook" style="color: #A8CF45;"></i></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="www.instagram.com/zerandomultas/"><i class="fa fa-instagram" style="color: #A8CF45;"></i></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="#"><i class="fa fa-twitter" style="color: #A8CF45;"></i></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="#"><i class="fa fa-youtube" style="color: #A8CF45;"></i></a></li>
                 </ul>
@@ -36,60 +31,58 @@
         </div>
     </nav>
     <main id="Principal">
-        <div class="row">
-            <div class="col-12 col-lg-12 offset-lg-0">
+        <div class="row no-gutters">
+            <div class="col">
                 <div class="row">
-                    <div class="col-12"><img class="img-fluid img-principal" src="{% static "assets/img/img_principal2.png" %}"></div>
+                    <div class="col d-table-cell imgPrincipal"><img class="d-block img-principal" src="{% static "assets/img/img_principal.png" %}"></div>
                 </div>
                 {% block mainContainer %}
-                <div class="container" style="margin: -25% 0% 4% 0%;"><img class="img-fluid" src="{% static "assets/img/nao_fique_sem_dirigir.png" %}" id="notDrive" style="width: 70%;opacity: 1;filter: blur(0px);"></div>
-                <div class="container-fluid" style="background-color: #ffffff;">
-                    <div class="row no-gutters d-table">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col-4 col-md-4 col-lg-4 col-xl-4 text-center">
-                                    <div class="row">
-                                        <div class="col-12 col-md-12"><img class="img-fluid" src="{% static "assets/img/bt_quem_somos.png" %}" style="width: 40%;"></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="lead text-center d-inline-block optionsTxt" style="color: #69AE4F;">QUEM SOMOS</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="lead text-center d-inline-block parag" face="MuseoSans500">A Zerando Multas é especializada na prestação de serviços na área do Direito de Trânsito. Elaboramos defesas e recursos contra Multas, Suspensão, Cassação e Permissão do Direito de Dirigir.</p>
-                                        </div>
+                <div class="container mx-auto" style="margin: -25% 0% 4% 0%;"><img class="notDrive" src="{% static "assets/img/nao_fique_sem_dirigir.png" %}"></div>
+                <div class="row no-gutters" style="background-color: #ffffff;">
+                    <div class="col-auto">
+                        <div class="row no-gutters">
+                            <div class="col-auto col-md-4 col-lg-4 col-xl-4 text-center">
+                                <div class="row">
+                                    <div class="col-md-12"><img class="img-fluid optionsImg" src="{% static "assets/img/bt_quem_somos.png" %}"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="text-center d-inline-block optionsTxt fontMuseoSans500">QUEM SOMOS</p>
                                     </div>
                                 </div>
-                                <div class="col-4 col-md-4 col-lg-4 col-xl-4 text-center">
-                                    <div class="row">
-                                        <div class="col"><img class="img-fluid" src="{% static "assets/img/bt_zere_multas.png" %}" style="width: 40%;"></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="lead d-inline-block optionsTxt" style="color: #69AE4F;">ZERE MULTAS</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p class="lead text-center d-inline-block parag">Ajudamos você a recorrer das infrações de trânsito. O nosso objetivo é zerar suas multas. Para isso, analisamos como a legislação atual pode solucionar o seu caso.</p>
-                                        </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="lead text-center d-inline-block parag" face="MuseoSans500">A Zerando Multas é especializada na prestação de serviços na área do Direito de Trânsito. Elaboramos defesas e recursos contra Multas, Suspensão, Cassação e Permissão do Direito de Dirigir.</p>
                                     </div>
                                 </div>
-                                <div class="col-4 col-md-4 col-lg-4 col-xl-4 text-center">
-                                    <div class="row">
-                                        <div class="col"><img class="img-fluid" src="{% static "assets/img/bt_servicos.png" %}" style="width: 40%;"></div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-xl-4">
+                                <div class="row">
+                                    <div class="col"><img class="img-fluid optionsImg" src="{% static "assets/img/bt_zere_multas.png" %}"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="d-inline-block optionsTxt fontMuseoSans500">ZERE MULTAS</p>
                                     </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="lead d-inline-block optionsTxt" style="padding: 0;color: #69AE4F;">SERVIÇOS</p>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p class="lead text-center d-inline-block parag" face="MuseoSans500">Ajudamos você a recorrer das infrações de trânsito. O nosso objetivo é zerar suas multas. Para isso, analisamos como a legislação atual pode solucionar o seu caso.</p>
                                     </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="lead text-center d-inline-block parag">Contrate a assessoria do Zerando Multas para elaborar e acompanhar sua defesa administrativa. A partir da sua demanda, elaboramos o recurso personalizado, visando o cancelamento das suas multas.</p>
-                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-xl-4">
+                                <div class="row">
+                                    <div class="col"><img class="img-fluid optionsImg" src="{% static "assets/img/bt_servicos.png" %}"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="d-inline-block optionsTxt fontMuseoSans500">SERVIÇOS</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p class="text-center d-inline-block parag" face="MuseoSans500">Contrate a assessoria do Zerando Multas para elaborar e acompanhar sua defesa administrativa. A partir da sua demanda, elaboramos o recurso personalizado, visando o cancelamento das suas multas.</p>
                                     </div>
                                 </div>
                             </div>
@@ -98,63 +91,31 @@
                 </div>
             </div>
         </div>
-        <div class="row d-inline">
-            <div class="col text-center" style="background-color: #69AE4F;font-size: 50px;color: #ffffff;margin-top: -2%;">
-                <div class="row" style="height: 75px;margin: 0;">
-                    <div class="col-12">
-                        <div class="container-fluid text-center">
-                            <p class="lead fontMuseoSans700 howWorks">Como funciona</p>
+        <div class="row no-gutters" id="Footer">
+            <div class="col text-center colFooter">
+                <div class="row">
+                    <div class="col">
+                        <div class="container">
+                            <div class="col">
+                                <p class="howWorks fontMuseoSans700">Como funciona</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 text-center" style="background-color: #A8CF45;font-size: 50px;color: #ffffff;">
-                        <div class="container-fluid text-center" style="padding: 26px;">
-                            <p class="lead fontMuseoSans700 paragFooter" style="color: #000000"><em>Quer recorrer da sua infração? Nós te ajudamos!</em></p>
-                            <p class="lead fontMuseoSans700 paragFooter" style="color: #ffffff;margin: -18px -18px 20px;"><em>Já ajudamos mais de 10 mil motoristas!</em></p><img class="img-fluid" src="{% static "assets/img/fluxo_principal.png" %}" style="margin: 22px;width: 80%;">
-                            <p class="lead" style="color: #ffffff;font-size: 20px;margin: -18px -18px 20px;"><a href={% url 'cadastro' %}><img class="img-fluid" src="{% static "assets/img/bt_quero_orcamento_principal.png" %}" id="btQueroOrcamento" style="width: 25%;margin: 30px;"></a></p>
-                        </div>
+                <div class="row no-gutters">
+                    <div class="col" id="colFooterFlux">
+                        <p id="txtWeHelp" class="paragFooter fontMuseoSans700"><em>Quer recorrer da sua infração? Nós te ajudamos!</em></p>
+                        <p id="textHelpLength" class="paragFooter fontMuseoSans700"><em>Já ajudamos mais de 10 mil motoristas!</em></p><img class="imgMainFlow" src="{% static "assets/img/fluxo_principal.png" %}">
+                        <p><a href={% url 'cadastro' %}><img id="btQueroOrcamento" src="{% static "assets/img/bt_quero_orcamento.png" %}"></a></p>
                     </div>
                 </div>
             </div>
         </div>
         {% endblock %}
     </main>
-    {% block depoimento %}
-        <main id="Depoimentos" class="mains">
-            <div class="row">
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-xl-12 offset-xl-0"><img class="img-fluid img-principal" src="{% static "assets/img/img_principal2.png" %}"></div>
-                    </div>
-                    <div class="container-fluid" style="margin: -30% 0%;">
-                        <div class="row">
-                            <div class="col" style="padding: 0px;">
-                                <p class="lead fontMuseoSans700Italic" style="font-size: 200%;">Quer recorrer da sua infração? Nós te ajudamos!</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <p class="lead fontMuseoSans700Italic" style="font-size: 150%;margin: -18px -18px 20px;color: white;">Já ajudamos mais de 10 mil motoristas!<br></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col"><img class="img-fluid" src="{% static "assets/img/fluxo_blog.png" %}" style="width: 80%;"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col" style="padding: 40px 0px 0px 0px;"><a href={% url 'cadastro' %}><img class="img-fluid" src="{% static "assets/img/bt_quero_orcamento_principal.png" %}" id="btQueroOrcamento2" style="width: 30%;"></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    {% endblock %}
     <script src="{% static "assets/js/jquery.min.js" %}"></script>
     <script src="{% static "assets/bootstrap/js/bootstrap.min.js" %}"></script>
-    <script src="{% static "assets/js/fileChooser.js" %}"></script>
-    <script src="{% static "assets/js/jquery.maskedinput.js" %}"></script>
-    <script src="{% static "assets/js/mainController.js" %}"></script>
-    <script src="{% static "assets/js/masks.js" %}"></script>
+    <script src="{% static "assets/js/script.min.js" %}"></script>
 </body>
 
 </html>

@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block blog %}
+<main id="Blog">
+    <div class="row">
+        <div class="col">
+            <div class="container-fluid" id="containerDep">
+                <div class="row">
+                    <div class="col">
+                        <p class="paraghDepoimentos fontMuseoSans700Italic"><strong>Quer recorrer da sua infração? Nós te ajudamos!</strong></p>
+                        <p id="weHelpDepoimentos" class="paraghDepoimentos fontMuseoSans700Italic"><strong>Já ajudamos mais de 10 mil motoristas!</strong><br></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"><img class="img-fluid" id="imgFluxoDepoimentos" src="{% static "assets/img/fluxo_blog.png" %}"></div>
+                </div>
+                <div class="row">
+                    <div class="col" id="colBtDepoimentos"><a href={% url 'cadastro' %}><img class="img-fluid" id="btQueroOrcamento" src="{% static "assets/img/bt_quero_orcamento.png" %}"></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-8" id="ContentBlog">
+        <div class="row">
+            <div class="col-auto d-none d-md-flex mx-auto justify-content-md-center align-items-md-start"><img class="img-fluid imgBlog" src="{% static "assets/img/images.png" %}"></div>
+            <div class="col colNews">
+                <div class="row">
+                    <div class="col d-block">
+                        <p class="noticeTitle" face="MuseoSans500"><strong>Como Recorrer de Uma Multa Indevida?</strong></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-block">
+                        <p class="text-left d-flex" face="MuseoSans500">Talvez você não acredite, mas são muitos os casos que recebo em que ficam bastante claros os erros cometidos pelos órgãos, desde o momento em que o agente de trânsito aplica a penalidade ao motorista até a hora em que o condutor
+                            é notificado em seu endereço.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

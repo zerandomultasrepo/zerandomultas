@@ -1,33 +1,35 @@
 {% extends 'index.html' %}
 {% load staticfiles %}
 {% block mainContainer %}
- <form action="" id="contato" method="POST" enctype="multipart/form-data">
-     {% csrf_token %}
-            <div class="row">
-                <div class="col">
-                    <div class="container forms" style="width: 50%;height: 456px;margin: -20% 25%;padding: -166px;">
-                        <p class="fontMuseoSans900" style="color: #FFFFFF;font-size: 130%;padding: 15px 0px 0px 0px;"><strong>CONTATO</strong></p>
-                        <div id="div_contato" style="background-color: #ffffff;">
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col" style="margin: 20px 0px 10px 0px;">{{form.nome}}</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col" style="margin: 0px 0px 10px 0px;">{{form.telefone}}</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col" style="margin: 0px 0px 10px 0px;">{{form.email}}</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col" style="margin: 0px 0px 10px 0px;">{{form.mensagem}}</div>
-                                </div>
-                                <div class="row" style="padding: 0px 0px 10px 0px;">
-                                    <div class="col text-right"><a href="#" onclick="document.forms['contato'].submit();" class="navIcons" style="margin: 0px 0px 0px 10px;;"><img class="img-fluid" src="{% static "assets/img/bt_enviar.png" %}" style="width: 15%;"></a></div>
-                                </div>
+<main id="Contato">
+    {% csrf_token %}
+    <form id="contato" method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="col">
+                <div class="container forms contact">
+                    <p id="contatoTitle" class="fontMuseoSans900"><strong>CONTATO</strong></p>
+                    <div id="div_contato">
+                        <div class="col">
+                            <div class="form-row">
+                                <div class="col" style="margin: 20px 0px 10px 0px;">{{form.nome}}</div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col" style="margin: 0px 0px 10px 0px;">{{form.telefone}}</div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col" style="margin: 0px 0px 10px 0px;">{{form.email}}</div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col" style="margin: 0px 0px 10px 0px;">{{form.mensagem}}</div>
+                            </div>
+                            <div class="form-row" style="padding: 0px 0px 10px 0px;">
+                                <div class="col text-right"><a class="navIcons" href=""><img class="img-fluid" id="btEnviarContato" src="{% static "assets/img/bt_enviar.png" %}"></a></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </form>
-{% endblock %}
+    {% endblock %}
+</main>

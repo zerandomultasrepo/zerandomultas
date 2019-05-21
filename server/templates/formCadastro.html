@@ -88,7 +88,7 @@
                             <div class="form-row" style="padding: 0px 0px 10px 0px;">
                                 <div class="col text-left">
                                     <div class="file-upload">
-                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR CÓPIA DO DUT </div><div id="noDutFile" class="file-select-name"></div>{{ form.dut_copy }}</div>
+                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR CÓPIA DO CRLV </div><div id="noDutFile" class="file-select-name"></div>{{ form.dut_copy }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -101,27 +101,12 @@
             </div>
         </div>
     </form>
-    <div class="modal fade" role="dialog" tabindex="-1" id="modalPaymentSuccessful">
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalCadastro">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Status do pagamento</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body">
-                    <p style="color: #008000;">Pagamento realizado com sucesso!</p>
+                    <p id="pModalCadastro"></p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button></div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="modalPaymentProcessing">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Status do pagamento</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <p style="color: #0000FF;">Seu pagamento está sendo processado. Aguarde...</p>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button></div>
             </div>
         </div>
     </div>

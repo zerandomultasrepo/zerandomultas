@@ -53,7 +53,7 @@ class FormCadastro(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update(
-            {'placeholder': 'NOME', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'class': 'input-contact'})
+            {'placeholder': 'NOME', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'class': 'input-contact', 'required':'true'})
         self.fields['email'].widget.attrs.update(
             {'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'type': 'email'})
         self.fields['phone'].widget.attrs.update(
@@ -65,5 +65,5 @@ class FormCadastro(forms.ModelForm):
         self.fields['drivers_licence'].widget.attrs.update(
             {'id': 'chooseLicenseFile'})
         self.fields['dut_copy'].widget.attrs.update(
-            {'id': 'chooseDutFile', 'name': ''})
+            {'id': 'chooseDutFile'})
 

@@ -109,6 +109,7 @@ class ContatoView(FormView):
 
     def form_invalid(self, form):
         print(form.errors)
+        return super(ContatoView, self).form_invalid(form)
 
 
 class CadastroView(FormView):
@@ -149,12 +150,15 @@ class CadastroView(FormView):
                              reply_to=['zerandomultas@gmail.com'],
                              headers={'Message-ID': 'Ocorrencia'}, )
 
-        trafic_ticket = data['traffic_ticket'].name.replace(" ", "_")
-        drivers_licence = data['drivers_licence'].name.replace(" ", "_")
-        dut_copy = data['dut_copy'].name.replace(" ", "_")
-        email.attach_file(os.path.join(settings.MEDIA_ROOT,'ocorrencia/'+ data['email'] + '/' + trafic_ticket))
-        email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/'+ data['email'] + '/'+ drivers_licence))
-        email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/'+ data['email'] + '/'+ dut_copy))
+        if ('traffic_ticket' in data.keys() and data['traffic_ticket']):
+            trafic_ticket = data['traffic_ticket'].name.replace(" ", "_")
+            email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/' + data['email'] + '/' + trafic_ticket))
+        if ('drivers_licence' in data.keys() and data['drivers_licence']):
+            drivers_licence = data['drivers_licence'].name.replace(" ", "_")
+            email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/' + data['email'] + '/' + drivers_licence))
+        if ('dut_copy' in data.keys() and data['dut_copy']):
+            dut_copy = data['dut_copy'].name.replace(" ", "_")
+            email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/'+ data['email'] + '/'+ dut_copy))
 
         email.send()
 
@@ -162,3 +166,4 @@ class CadastroView(FormView):
 
     def form_invalid(self, form):
         print(form.errors)
+        return super(CadastroView, self).get(form)

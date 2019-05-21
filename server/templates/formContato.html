@@ -2,8 +2,8 @@
 {% load staticfiles %}
 {% block mainContainer %}
 <main id="Contato">
-    {% csrf_token %}
-    <form id="contato" method="post" enctype="multipart/form-data">
+    <form id="formContato" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
         <div class="form-row">
             <div class="col">
                 <div class="container forms contact">
@@ -23,7 +23,7 @@
                                 <div class="col" style="margin: 0px 0px 10px 0px;">{{form.mensagem}}</div>
                             </div>
                             <div class="form-row" style="padding: 0px 0px 10px 0px;">
-                                <div class="col text-right"><a class="navIcons" href=""><img class="img-fluid" id="btEnviarContato" src="{% static "assets/img/bt_enviar.png" %}"></a></div>
+                                <div class="col text-right"><a class="navIcons" onclick="document.forms['formContato'].submit();"><img class="img-fluid" id="btEnviarContato" src="{% static "assets/img/bt_enviar.png" %}"></a></div>
                             </div>
                         </div>
                     </div>
@@ -40,5 +40,5 @@
             </div>
         </div>
     </form>
-    {% endblock %}
 </main>
+{% endblock %}

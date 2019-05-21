@@ -37,7 +37,8 @@
             </div>
         </div>
     </div>
-    <form id="formComentarios" method="post" enctype="multipart/form-data">
+    <form id="formDepoimentos" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         <div class="form-row">
             <div class="col" style="margin: 10px 0px 10px 0px;"><input class="form-control input-contact" type="text" placeholder="Nome"></div>
         </div>
@@ -48,7 +49,7 @@
             <div class="col" style="margin: 0px 0px 10px 0px;"><textarea class="form-control input-contact" style="height: 150px;" placeholder="Depoimento"></textarea></div>
         </div>
         <div class="form-row" style="padding: 0px 0px 10px 0px;">
-            <div class="col text-right"><a class="navIcons" href=""><img class="img-fluid" id="btEnviarContato" src="{% static "assets/img/bt_enviar.png" %}"></a></div>
+            <div class="col text-right"><a class="navIcons" onclick="document.forms['formDepoimentos'].submit();"><img class="img-fluid" id="btEnviarDepoimento" src="{% static "assets/img/bt_enviar.png" %}"></a></div>
         </div>
         <div class="modal fade" role="dialog" tabindex="-1" id="modalDepoimentos">
             <div class="modal-dialog" role="document">

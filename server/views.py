@@ -1,6 +1,6 @@
 import os
 from django.conf import settings
-from django.core.mail import send_mass_mail, EmailMessage
+from django.core.mail import send_mail, EmailMessage
 from django.views.generic import FormView
 from django.shortcuts import render
 
@@ -10,7 +10,7 @@ from rest_framework.permissions import BasePermission, IsAuthenticatedOrReadOnly
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework_jwt.views import ObtainJSONWebToken
 
-from server.forms import FormContato, FormCadastro
+from server.forms import FormContato, FormCadastro, FormOccurrence
 from server.models import Occurrence, Post
 from server.serializers import OccurrenceSerializer
 
@@ -104,7 +104,7 @@ class ContatoView(FormView):
         Este método adiciona uma nova atividade no banco de dados.
         """
         data = form.cleaned_data
-        send_mass_mail(
+        send_mail(
             '[CONTATO] - ZERANDO MULTAS - %s - %s' % (data['nome'], data['telefone']),
             data['mensagem'] + "/n Contato do Cliente /n" + data['email'],
             data['email'],
@@ -145,32 +145,109 @@ class CadastroView(FormView):
         """
         Este método adiciona uma nova atividade no banco de dados.
         """
-        form.save()
         data = form.cleaned_data
 
-        message = data['description'] + "'/n' Contato do Cliente '/n'" + data['email'];
-        email = EmailMessage(subject='[OCORRENCIA] - ZERANDO MULTAS - %s - %s' % (data['name'], data['phone']),
-                             body=message,
-                             from_email=data['email'],
-                             to=['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
-                             # ['bcc@example.com'],
-                             reply_to=['zerandomultas@gmail.com'],
-                             headers={'Message-ID': 'Ocorrencia'}, )
+        if not Occurrence.objects.filter(email=data['email']).exists():
+            form.save()
+            return render(self.request, 'formCadastro.html',
+                          {'form': form})
+        else:
+            occurence_obj = Occurrence.objects.filter(email=data['email']).last()
+            if not occurence_obj.description:
+                Occurrence.objects.filter(email=data['email']).last().delete()
+            form.save()
+        if 'description' in data.keys() and data['description']:
+            message = data['description'] + "'/n' Contato do Cliente '/n'" + data['email'];
+            email = EmailMessage(subject='[OCORRENCIA] - ZERANDO MULTAS - %s - %s' % (data['name'], data['phone']),
+                                 body=message,
+                                 from_email=data['email'],
+                                 to=['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
+                                 # ['bcc@example.com'],
+                                 reply_to=['zerandomultas@gmail.com'],
+                                 headers={'Message-ID': 'Ocorrencia'}, )
 
-        if ('traffic_ticket' in data.keys() and data['traffic_ticket']):
-            trafic_ticket = data['traffic_ticket'].name.replace(" ", "_")
-            email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/' + data['email'] + '/' + trafic_ticket))
-        if ('drivers_licence' in data.keys() and data['drivers_licence']):
-            drivers_licence = data['drivers_licence'].name.replace(" ", "_")
-            email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/' + data['email'] + '/' + drivers_licence))
-        if ('dut_copy' in data.keys() and data['dut_copy']):
-            dut_copy = data['dut_copy'].name.replace(" ", "_")
-            email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/'+ data['email'] + '/'+ dut_copy))
+            if ('traffic_ticket' in data.keys() and data['traffic_ticket']):
+                trafic_ticket = data['traffic_ticket'].name.replace(" ", "_")
+                email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/' + data['email'] + '/' + trafic_ticket))
+            if ('drivers_licence' in data.keys() and data['drivers_licence']):
+                drivers_licence = data['drivers_licence'].name.replace(" ", "_")
+                email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/' + data['email'] + '/' + drivers_licence))
+            if ('dut_copy' in data.keys() and data['dut_copy']):
+                dut_copy = data['dut_copy'].name.replace(" ", "_")
+                email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/'+ data['email'] + '/'+ dut_copy))
 
-        email.send()
+            email.send()
 
-        return super(CadastroView, self).form_valid(form)
+            return super(CadastroView, self).form_valid(form)
+        else:
+            return render(self.request, 'formCadastro.html',
+                          {'form': form})
 
     def form_invalid(self, form):
         print(form.errors)
         return super(CadastroView, self).get(form)
+
+
+def multiple_cadastro_view(request):
+    if request.method == 'POST':
+        form_cadastro = FormCadastro(request.POST, request.FILES)
+        form_occurrence = FormOccurrence(request.POST, request.FILES)
+        if form_cadastro.is_valid():
+            data = form_cadastro.cleaned_data
+            try:
+                occurrence = Occurrence.objects.get(email=data['email'])
+            except Occurrence.DoesNotExist:
+                occurrence = None
+            if not occurrence:
+                occurrence = Occurrence()
+                occurrence.name = data['name']
+                occurrence.email = data['email']
+                occurrence.phone = data['phone']
+                # occurrence.paid = data['paid']
+                occurrence.save()
+
+        if form_occurrence.is_valid():
+            data = form_occurrence.cleaned_data
+            Occurrence.objects.get(email=request.POST[u'email']).delete()
+            form_occurrence.save()
+            #occurrence = Occurrence.objects.get(email=request.POST[u'email'])
+            #occurrence.description = form_occurrence['description']
+            #occurrence.save()
+
+            message = data['description'] + "'/n' Contato do Cliente '/n'" + request.POST[u'email'];
+            email = EmailMessage(subject='[OCORRENCIA] - ZERANDO MULTAS - %s - %s' % (request.POST[u'name'], request.POST[u'phone']),
+                                 body=message,
+                                 from_email=request.POST[u'email'],
+                                 to=['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
+                                 # ['bcc@example.com'],
+                                 reply_to=['zerandomultas@gmail.com'],
+                                 headers={'Message-ID': 'Ocorrencia'}, )
+
+            if ('traffic_ticket' in data.keys() and data['traffic_ticket']):
+                trafic_ticket = data['traffic_ticket'].name.replace(" ", "_")
+
+                email.attach_file(
+                    os.path.join(settings.MEDIA_ROOT, 'ocorrencia/' + request.POST[u'email'] + '/' + trafic_ticket))
+            if ('drivers_licence' in data.keys() and data['drivers_licence']):
+                drivers_licence = data['drivers_licence'].name.replace(" ", "_")
+
+                email.attach_file(
+                    os.path.join(settings.MEDIA_ROOT, 'ocorrencia/' + request.POST[u'email'] + '/' + drivers_licence))
+            if ('dut_copy' in data.keys() and data['dut_copy']):
+                dut_copy = data['dut_copy'].name.replace(" ", "_")
+
+                email.attach_file(os.path.join(settings.MEDIA_ROOT, 'ocorrencia/' + request.POST[u'email'] + '/' + dut_copy))
+
+            email.send()
+            # Do the needful
+            return render(request, 'index.html')
+        return render(request, 'formCadastro.html',
+                      {'form_cadastro': form_cadastro, 'form_occurrence': form_occurrence})
+    else:
+        form_cadastro = FormCadastro()
+        form_occurrence = FormOccurrence()
+
+    return render(request, 'formCadastro.html', {
+        'form_cadastro': form_cadastro,
+        'form_occurrence': form_occurrence,
+    })

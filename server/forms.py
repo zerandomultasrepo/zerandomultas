@@ -37,7 +37,6 @@ class FormCadastro(forms.ModelForm):
     """
     Formulário de cadastro
     """
-
     class Meta:
         model = Occurrence
         fields = [
@@ -66,4 +65,3 @@ class FormCadastro(forms.ModelForm):
             {'id': 'chooseLicenseFile'})
         self.fields['dut_copy'].widget.attrs.update(
             {'id': 'chooseDutFile'})
-

@@ -161,7 +161,7 @@ class CadastroView(FormView):
                 Occurrence.objects.filter(email=data['email']).last().delete()
             form.save()
         if 'description' in data.keys() and data['description']:
-            message = data['name'] + "\n" + data['email'] + "\n" + data['telefone'] + "\n\n" + data['description']
+            message = data['name'] + "\n" + data['email'] + "\n" + data['phone'] + "\n\n" + data['description']
             email = EmailMessage(subject='[OCORRENCIA] ZERANDO MULTAS - %s ' % (data['name']),
                                  body=message,
                                  from_email=data['email'],

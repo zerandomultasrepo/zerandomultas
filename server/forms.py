@@ -49,7 +49,7 @@ class FormCadastro(forms.ModelForm):
             'drivers_licence',
             'dut_copy',
             'paid',
-            'plan'
+            # 'plan'
         ]
 
     def __init__(self, *args, **kwargs):
@@ -62,7 +62,7 @@ class FormCadastro(forms.ModelForm):
         self.fields['phone'].widget.attrs.update(
             {'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'class': 'input-contact', 'style': 'padding-left: 5px;'})
         self.fields['paid'].widget = forms.HiddenInput()
-        self.fields['plan'].widget = forms.HiddenInput()
+        # self.fields['plan'].widget = forms.HiddenInput()
         self.fields['description'].widget.attrs.update(
             {'placeholder': 'DESCRIÇÃO DA MULTA', 'class': 'input-contact', 'style': 'height: 150px; padding-left: 10px;'})
         self.fields['traffic_ticket'].widget.attrs.update(

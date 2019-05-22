@@ -47,21 +47,12 @@
             <div class="form-row">
                 <div class="col" style="margin: 10px 0px 10px 0px;">{{ form.name }}</div>
             </div>
-            {% if form.name.errors %}
-                <div style="color:red"><strong>{{ form.name.errors|escape }}</strong></div>
-            {% endif %}
             <div class="form-row">
                 <div class="col" style="margin: 0px 0px 10px 0px;">{{ form.email }}</div>
             </div>
-            {% if form.email.errors %}
-                <div style="color:red"><strong>{{ form.email.errors|escape }}</strong></div>
-            {% endif %}
             <div class="form-row">
                 <div class="col" style="margin: 0px 0px 10px 0px;">{{ form.comment }}</div>
             </div>
-            {% if form.comment.errors %}
-                <div style="color:red"><strong>{{ form.comment.errors|escape }}</strong></div>
-            {% endif %}
             <div class="form-row" style="padding: 0px 0px 10px 0px;">
                 <div class="col text-right"><a class="navIcons" onclick="document.forms['formDepoimento'].submit();"><img class="img-fluid" id="btEnviarDepoimento" src="{% static "assets/img/bt_enviar.png" %}"></a></div>
             </div>

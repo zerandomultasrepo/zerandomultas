@@ -1,7 +1,8 @@
 {% extends 'index.html' %}
 {% load staticfiles %}
-<main id="Depoimentos">
+
     {% block mainContainer %}
+        <main id="Depoimentos">
     <div class="row">
         <div class="col">
             <div class="container-fluid" id="containerDep">
@@ -21,12 +22,16 @@
         </div>
     </div>
     <div class="col" id="contentCol">
-        <div class="row d-xl-flex" id="contentDepoimentos">
-            <div class="col-auto mx-auto"><img class="peoplePhotos" src="{% static "assets/img/images.png" %}"></div>
-            <div class="col-12">
-                <p class="flex-wrap" face="MuseoSans500">Zerando Multas: Ler um caso de sucesso minimiza o risco do seu cliente antes de fazer a <br>primeira compra. Isso diminui a desconfiança que todo cliente tem quando<br> ainda não conhece uma empresa.</p>
+        {% for comment in comments %}
+            {% if comment.accepted %}
+                <div class="row d-xl-flex" id="contentDepoimentos">
+                    <div class="col-auto mx-auto"><img class="peoplePhotos" src="{% static "assets/img/images.png" %}"></div>
+                        <div class="col-12">
+                            <p class="flex-wrap" face="MuseoSans500">{{ comment.comment|safe }}</p>
+                    </div>
             </div>
-        </div>
+            {% endif %}
+        {% endfor %}
     </div>
 </main>
 <footer id="footerDepoimentos">
@@ -38,18 +43,28 @@
         </div>
     </div>
     <div class="col-12 d-inline-flex justify-content-center">
-        <form id="formDepoimentos" method="post" enctype="multipart/form-data">
+        <form id="formDepoimento" method="post">
+        {% csrf_token %}
             <div class="form-row">
-                <div class="col" style="margin: 10px 0px 10px 0px;"><input class="form-control input-contact" type="text" placeholder="Nome"></div>
+                <div class="col" style="margin: 10px 0px 10px 0px;">{{ form.name }}</div>
             </div>
+            {% if form.name.errors %}
+                <div style="color:red"><strong>{{ form.name.errors|escape }}</strong></div>
+            {% endif %}
             <div class="form-row">
-                <div class="col" style="margin: 0px 0px 10px 0px;"><input class="form-control input-contact" type="email" placeholder="E-mail"></div>
+                <div class="col" style="margin: 0px 0px 10px 0px;">{{ form.email }}</div>
             </div>
+            {% if form.email.errors %}
+                <div style="color:red"><strong>{{ form.email.errors|escape }}</strong></div>
+            {% endif %}
             <div class="form-row">
-                <div class="col" style="margin: 0px 0px 10px 0px;"><textarea class="form-control input-contact" style="height: 150px;" placeholder="Depoimento"></textarea></div>
+                <div class="col" style="margin: 0px 0px 10px 0px;">{{ form.comment }}</div>
             </div>
+            {% if form.comment.errors %}
+                <div style="color:red"><strong>{{ form.comment.errors|escape }}</strong></div>
+            {% endif %}
             <div class="form-row" style="padding: 0px 0px 10px 0px;">
-                <div class="col text-right"><a class="navIcons" href=""><img class="img-fluid" id="btEnviarDepoimento" src="{% static "assets/img/bt_enviar.png" %}"></a></div>
+                <div class="col text-right"><a class="navIcons" onclick="document.forms['formDepoimento'].submit();"><img class="img-fluid" id="btEnviarDepoimento" src="{% static "assets/img/bt_enviar.png" %}"></a></div>
             </div>
         </form>
     </div>

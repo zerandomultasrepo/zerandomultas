@@ -20,9 +20,7 @@ from server import views
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
-from server.views import ContatoView, CadastroView
-
-
+from server.views import ContatoView, CadastroView, CommentView
 
 admin.autodiscover()
 
@@ -35,7 +33,7 @@ urlpatterns = [
  #   url(r'^', include(router.urls)),
     url(r'^login', LoginView.as_view(), name="login"),
     url(r'^blog', views.homeBlog, name='blog'),
-    url(r'^depoimentos', views.depoimentos, name='depoimentos'),
+    url(r'^depoimentos', CommentView.as_view(), name='depoimentos'),
     url(r'^fale-conosco', ContatoView.as_view(), name='fale-conosco'),
     url(r'^cadastro', CadastroView.as_view(), name='cadastro'),
     url(r'^posts/(?P<post_id>\d+)', views.post),

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
 
-from server.models import Occurrence
+from server.models import Occurrence, Comment
 
 
 class FormContato(forms.Form):
@@ -37,6 +37,7 @@ class FormCadastro(forms.ModelForm):
     """
     Formulário de cadastro
     """
+
     class Meta:
         model = Occurrence
         fields = [
@@ -46,17 +47,22 @@ class FormCadastro(forms.ModelForm):
             'description',
             'traffic_ticket',
             'drivers_licence',
-            'dut_copy'
+            'dut_copy',
+            'paid',
+            'plan'
         ]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update(
-            {'placeholder': 'NOME', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'class': 'input-contact', 'required':'true'})
+            {'placeholder': 'NOME', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'class': 'input-contact',
+             'required': 'true'})
         self.fields['email'].widget.attrs.update(
             {'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'type': 'email'})
         self.fields['phone'].widget.attrs.update(
             {'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'class': 'input-contact'})
+        self.fields['paid'].widget = forms.HiddenInput()
+        self.fields['plan'].widget = forms.HiddenInput()
         self.fields['description'].widget.attrs.update(
             {'placeholder': 'DESCRIÇÃO DA MULTA', 'class': 'input-contact', 'style': 'height: 150px;'})
         self.fields['traffic_ticket'].widget.attrs.update(
@@ -65,3 +71,27 @@ class FormCadastro(forms.ModelForm):
             {'id': 'chooseLicenseFile'})
         self.fields['dut_copy'].widget.attrs.update(
             {'id': 'chooseDutFile'})
+
+
+class FormComment(forms.ModelForm):
+    """
+    Formulário de comentário
+    """
+
+    class Meta:
+        model = Comment
+        fields = [
+            'name',
+            'email',
+            'comment'
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update(
+            {'placeholder': 'NOME', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'class': 'input-contact',
+             'required': 'true'})
+        self.fields['email'].widget.attrs.update(
+            {'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'type': 'email'})
+        self.fields['comment'].widget.attrs.update(
+            {'placeholder': 'DEPOIMENTO', 'class': 'input-contact', 'style': 'height: 150px;'})

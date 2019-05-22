@@ -63,6 +63,11 @@
                             <div class="form-row">
                                 <div class="col" style="margin: 0px 0px 10px 0px;">{{form.email}}</div>
                             </div>
+                            <div class="col">
+                                {% if form.email.errors %}
+                                    <div style="color:red"><strong>{{ form.email.errors|escape }}</strong></div>
+                                {% endif %}
+                            </div>
                             <div class="form-row">
                                 <div class="col" style="margin: 0px 0px 10px 0px;">{{form.description}}</div>
                             </div>

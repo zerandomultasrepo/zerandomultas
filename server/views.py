@@ -107,12 +107,12 @@ class ContatoView(FormView):
         Este método adiciona uma nova atividade no banco de dados.
         """
         data = form.cleaned_data
-        mensagem = data['nome'] + "\n" + data['email'] + "\n" + data['telefone'] + "\n\n" + data['mensagem']
+        mensagem = "Nome: " + data['nome'] + "\n" + "Telefone: " + data['telefone'] + "\n" + "E-Mail: " + data['email']+ "\n\n" + "Mensagem: " + data['mensagem']
         send_mail(
             '[CONTATO] ZERANDO MULTAS - %s ' % (data['nome']),
             mensagem,
             data['email'],
-            ['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
+            ['zerandomultas@gmail.com', 'betinho.fmn@gmail.com'],
             fail_silently=False,
         )
 
@@ -161,13 +161,12 @@ class CadastroView(FormView):
                 Occurrence.objects.filter(email=data['email']).last().delete()
             form.save()
         if 'description' in data.keys() and data['description']:
-            message = data['name'] + "\n" + data['email'] + "\n" + data['phone'] + "\n\n" + data['description']
+            message = "Nome: " + data['name'] + "\n" + "E-Mail: " + data['email'] + "\n" + "Telefone: " + data['phone'] + "\n\n" + "Descrição da multa: " + data['description']
             email = EmailMessage(subject='[OCORRENCIA] ZERANDO MULTAS - %s ' % (data['name']),
                                  body=message,
                                  from_email=data['email'],
-                                 to=['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
-                                 # ['bcc@example.com'],
-                                 reply_to=['zerandomultas@gmail.com'],
+                                 to=['leo.cc14@gmail.com', 'betinho.fmn@gmail.com'],
+                                 # reply_to=['zerandomultas@gmail.com'],
                                  headers={'Message-ID': 'Ocorrencia'}, )
 
             if ('traffic_ticket' in data.keys() and data['traffic_ticket']):
@@ -208,7 +207,6 @@ class CommentView(FormView):
         """
         Realiza tratamento da data antes da validação do formulário.
         """
-        print("AQUIIII")
         data = request.POST
         print(request.POST)
         my_dict = {}
@@ -218,6 +216,14 @@ class CommentView(FormView):
         form = FormComment(my_dict)
 
         if form.is_valid():
+            mensagem = "Nome: " + data['name'] + "\n" + "E-Mail: " + data['email']+ "\n\n" + "Depoimento: " + data['comment']
+            send_mail(
+                '[DEPOIMENTO] ZERANDO MULTAS - %s ' % (data['name']),
+                mensagem,
+                data['email'],
+                ['zerandomultas@gmail.com', 'betinho.fmn@gmail.com'],
+            fail_silently=False,
+        )
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
@@ -227,11 +233,9 @@ class CommentView(FormView):
         Este método adiciona uma nova atividade no banco de dados.
         """
         form.save()
-        print("salvou")
         return super(CommentView, self).form_valid(form)
 
     def form_invalid(self, form):
-        print("ACULAAA")
         print(form.errors)
         comments = Comment.objects.all()
         return render(self.request, 'depoimentos.html',

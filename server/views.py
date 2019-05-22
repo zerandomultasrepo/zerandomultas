@@ -232,6 +232,6 @@ class CommentView(FormView):
     def form_invalid(self, form):
         print("ACULAAA")
         print(form.errors)
-        # return super(CommentView, self).get(form)
+        comments = Comment.objects.all()
         return render(self.request, 'depoimentos.html',
-                      {'form': form})
+                      {'form': form, 'comments': comments})

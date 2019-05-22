@@ -107,7 +107,7 @@ class ContatoView(SuccessMessageMixin, FormView):
             '[CONTATO] ZERANDO MULTAS - %s ' % (data['nome']),
             mensagem,
             data['email'],
-            ['betinho.fmn@gmail.com'],
+            ['zerandomultas@gmail.com', 'betinho.fmn@gmail.com'],
             fail_silently=False,
         )
 
@@ -219,7 +219,7 @@ class CommentView(SuccessMessageMixin, FormView):
                 '[DEPOIMENTO] ZERANDO MULTAS - %s ' % (data['name']),
                 mensagem,
                 data['email'],
-                ['betinho.fmn@gmail.com'],
+                ['zerandomultas@gmail.com', 'betinho.fmn@gmail.com'],
             fail_silently=False,
         )
             return self.form_valid(form)

@@ -9,13 +9,13 @@ class FormContato(forms.Form):
     Formulário de contato
     """
     nome = forms.CharField(max_length=120, widget=forms.TextInput(
-        attrs={'class': 'input-contact', 'style': 'margin: 20px 0px 10px 0px;', 'placeholder': 'NOME'}))
+        attrs={'class': 'input-contact', 'style': 'margin: 20px 0px 10px 0px;', 'style': 'padding-left: 10px;', 'placeholder': 'NOME'}))
     telefone = forms.CharField(
-        widget=forms.TextInput(attrs={'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'class': 'input-contact'}))
+        widget=forms.TextInput(attrs={'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'style': 'padding-left: 10px;', 'class': 'input-contact'}))
     email = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'type': 'email'}))
+        attrs={'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'style': 'padding-left: 10px;', 'type': 'email'}))
     mensagem = forms.CharField(widget=forms.Textarea(
-        attrs={'placeholder': 'SUA MENSAGEM', 'class': 'input-contact', 'style': 'height: 150px;'}))
+        attrs={'placeholder': 'SUA MENSAGEM', 'class': 'input-contact', 'style': 'height: 150px; padding-left: 10px;'}))
 
 
 PLAN_SELECTION = (
@@ -55,16 +55,16 @@ class FormCadastro(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update(
-            {'placeholder': 'NOME', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'class': 'input-contact',
+            {'placeholder': 'NOME', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'class': 'input-contact', 'style': 'padding-left: 10px;',
              'required': 'true'})
         self.fields['email'].widget.attrs.update(
-            {'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'type': 'email'})
+            {'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'style': 'padding-left: 10px;', 'type': 'email'})
         self.fields['phone'].widget.attrs.update(
-            {'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'class': 'input-contact'})
+            {'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'class': 'input-contact', 'style': 'padding-left: 5px;'})
         self.fields['paid'].widget = forms.HiddenInput()
         self.fields['plan'].widget = forms.HiddenInput()
         self.fields['description'].widget.attrs.update(
-            {'placeholder': 'DESCRIÇÃO DA MULTA', 'class': 'input-contact', 'style': 'height: 150px;'})
+            {'placeholder': 'DESCRIÇÃO DA MULTA', 'class': 'input-contact', 'style': 'height: 150px; padding-left: 10px;'})
         self.fields['traffic_ticket'].widget.attrs.update(
             {'id': 'chooseTicketFile'})
         self.fields['drivers_licence'].widget.attrs.update(
@@ -89,9 +89,9 @@ class FormComment(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update(
-            {'placeholder': 'NOME', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'class': 'input-contact',
+            {'placeholder': 'Nome', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'style': 'padding-left: 10px;', 'class': 'input-contact',
              'required': 'true'})
         self.fields['email'].widget.attrs.update(
-            {'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'type': 'email'})
+            {'placeholder': 'E-mail', 'id': 'emailContato', 'class': 'input-contact', 'style': 'padding-left: 10px;', 'type': 'email'})
         self.fields['comment'].widget.attrs.update(
-            {'placeholder': 'DEPOIMENTO', 'class': 'input-contact', 'style': 'height: 150px;'})
+            {'placeholder': 'Depoimento', 'class': 'input-contact', 'style': 'height: 150px; padding-left: 10px;'})

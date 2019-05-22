@@ -1,8 +1,7 @@
 {% extends 'index.html' %}
 {% load staticfiles %}
-
+<main id="Depoimentos">
     {% block mainContainer %}
-        <main id="Depoimentos">
     <div class="row">
         <div class="col">
             <div class="container-fluid" id="containerDep">
@@ -21,18 +20,18 @@
             </div>
         </div>
     </div>
-    <div class="col" id="contentCol">
-        {% for comment in comments %}
-            {% if comment.accepted %}
-                <div class="row d-xl-flex" id="contentDepoimentos">
-                    <div class="col-auto mx-auto"><img class="peoplePhotos" src="{% static "assets/img/images.png" %}"></div>
-                        <div class="col-12">
-                            <p class="flex-wrap" face="MuseoSans500">{{ comment.name }}: {{ comment.comment|safe }}</p>
-                    </div>
+    {% for comment in comments %}
+    {% if comment.accepted %}
+    <div class="col" id="contentDepoimentos">
+        <div class="row d-xl-flex">
+            <div class="col-12 mx-auto"><img class="peoplePhotos" src="{% static "assets/img/images.png" %}"></div>
+            <div class="col-12 d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center">
+                <p id="pUserComment" class="flex-wrap" face="MuseoSans500">{{ comment.name }}: {{ comment.comment|safe }}</p>
             </div>
-            {% endif %}
-        {% endfor %}
+        </div>
     </div>
+    {% endif %}
+    {% endfor %}
 </main>
 <footer id="footerDepoimentos">
     <div class="container-fluid">

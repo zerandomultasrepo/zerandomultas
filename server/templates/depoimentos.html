@@ -27,7 +27,7 @@
                 <div class="row d-xl-flex" id="contentDepoimentos">
                     <div class="col-auto mx-auto"><img class="peoplePhotos" src="{% static "assets/img/images.png" %}"></div>
                         <div class="col-12">
-                            <p class="flex-wrap" face="MuseoSans500">{{ comment.comment|safe }}</p>
+                            <p class="flex-wrap" face="MuseoSans500">{{ comment.name }}: {{ comment.comment|safe }}</p>
                     </div>
             </div>
             {% endif %}

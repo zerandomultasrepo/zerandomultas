@@ -32,6 +32,27 @@
     </div>
     {% endif %}
     {% endfor %}
+    {% if messages %}
+    <div id="modalDepoimento" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    {% for message in messages %}
+                    <p id="pModalDepoimento"> {{ message }} </p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        setTimeout(function(){
+            $("#modalDepoimento").modal('show');
+            setTimeout(function(){
+                $("#modalDepoimento").modal('hide');
+            }, 3000);
+        });
+    </script>
+    {% endif %}
 </main>
 <footer id="footerDepoimentos">
     <div class="container-fluid">

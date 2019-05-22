@@ -1,5 +1,6 @@
 import os
 from django.conf import settings
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.mail import send_mail, EmailMessage
 from django.views.generic import FormView
 from django.shortcuts import render
@@ -25,15 +26,6 @@ def homeBlog(request):
 def depoimentos(request):
     posts = Post.objects.all()
     return render(request, 'depoimentos.html', {'posts': posts})
-
-
-def successful(request):
-    posts = Post.objects.all()
-    return render(request, 'payment-successful.html')
-
-
-def processing(request):
-    return render(request, 'payment-processing.html')
 
 
 def post(request, post_id):
@@ -80,10 +72,13 @@ class OccurrenceViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticatedOrCreate,)
 
 
-class ContatoView(FormView):
+class ContatoView(SuccessMessageMixin, FormView):
     template_name = 'formContato.html'
     form_class = FormContato
-    success_url = '/'
+    success_url = 'fale-conosco'
+
+    def get_success_message(self, cleaned_data):
+        return "Mensagem enviada com sucesso, em breve entraremos em contato."
 
     def post(self, request, *args, **kwargs):
         """
@@ -112,7 +107,7 @@ class ContatoView(FormView):
             '[CONTATO] ZERANDO MULTAS - %s ' % (data['nome']),
             mensagem,
             data['email'],
-            ['zerandomultas@gmail.com', 'betinho.fmn@gmail.com'],
+            ['betinho.fmn@gmail.com'],
             fail_silently=False,
         )
 
@@ -193,10 +188,13 @@ class CadastroView(FormView):
         return super(CadastroView, self).get(form)
 
 
-class CommentView(FormView):
+class CommentView(SuccessMessageMixin, FormView):
     template_name = 'depoimentos.html'
     form_class = FormComment
-    success_url = '/'
+    success_url = 'depoimentos'
+
+    def get_success_message(self, cleaned_data):
+        return "Depoimento enviado com sucesso, passando por avaliação do mediador."
 
     def get(self, request, *args, **kwargs):
         comments = Comment.objects.all()
@@ -221,7 +219,7 @@ class CommentView(FormView):
                 '[DEPOIMENTO] ZERANDO MULTAS - %s ' % (data['name']),
                 mensagem,
                 data['email'],
-                ['zerandomultas@gmail.com', 'betinho.fmn@gmail.com'],
+                ['betinho.fmn@gmail.com'],
             fail_silently=False,
         )
             return self.form_valid(form)

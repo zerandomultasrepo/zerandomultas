@@ -30,15 +30,27 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" role="dialog" tabindex="-1" id="modalContato">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <p id="pModalContato"></p>
-                    </div>
+    </form>
+    {% if messages %}
+    <div id="modalContato" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    {% for message in messages %}
+                    <p id="pModalContato"> {{ message }} </p>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+    <script>
+        setTimeout(function(){
+            $("#modalContato").modal('show');
+            setTimeout(function(){
+                $("#modalContato").modal('hide');
+            }, 3000);
+        });
+    </script>
+    {% endif %}
 </main>
 {% endblock %}

@@ -107,9 +107,10 @@ class ContatoView(FormView):
         Este método adiciona uma nova atividade no banco de dados.
         """
         data = form.cleaned_data
+        mensagem = data['nome'] + "\n" + data['email'] + "\n" + data['telefone'] + "\n\n" + data['mensagem']
         send_mail(
-            '[CONTATO] - ZERANDO MULTAS - %s - %s' % (data['nome'], data['telefone']),
-            data['mensagem'] + "/n Contato do Cliente /n" + data['email'],
+            '[CONTATO] ZERANDO MULTAS - %s ' % (data['nome']),
+            mensagem,
             data['email'],
             ['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],
             fail_silently=False,
@@ -160,8 +161,8 @@ class CadastroView(FormView):
                 Occurrence.objects.filter(email=data['email']).last().delete()
             form.save()
         if 'description' in data.keys() and data['description']:
-            message = data['description'] + "'/n' Contato do Cliente '/n'" + data['email'];
-            email = EmailMessage(subject='[OCORRENCIA] - ZERANDO MULTAS - %s - %s' % (data['name'], data['phone']),
+            message = data['name'] + "\n" + data['email'] + "\n" + data['telefone'] + "\n\n" + data['description']
+            email = EmailMessage(subject='[OCORRENCIA] ZERANDO MULTAS - %s ' % (data['name']),
                                  body=message,
                                  from_email=data['email'],
                                  to=['leo.cc14@gmail.com', 'betinho.fmn@gmail.com', 'zerandomultas@gmail.com'],

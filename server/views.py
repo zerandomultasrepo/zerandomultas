@@ -118,10 +118,13 @@ class ContatoView(SuccessMessageMixin, FormView):
         return super(ContatoView, self).form_invalid(form)
 
 
-class CadastroView(FormView):
+class CadastroView(SuccessMessageMixin, FormView):
     template_name = 'formCadastro.html'
     form_class = FormCadastro
-    success_url = '/'
+    success_url = 'cadastro'
+
+    def get_success_message(self, cleaned_data):
+        return "Cadastro realizado com sucesso, em breve entraremos em contato."
 
     def post(self, request, *args, **kwargs):
         """
@@ -161,7 +164,6 @@ class CadastroView(FormView):
                                  body=message,
                                  from_email=data['email'],
                                  to=['leo.cc14@gmail.com', 'betinho.fmn@gmail.com'],
-                                 # reply_to=['zerandomultas@gmail.com'],
                                  headers={'Message-ID': 'Ocorrencia'}, )
 
             if ('traffic_ticket' in data.keys() and data['traffic_ticket']):

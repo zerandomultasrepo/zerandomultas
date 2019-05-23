@@ -17,7 +17,6 @@ class FormContato(forms.Form):
     mensagem = forms.CharField(widget=forms.Textarea(
         attrs={'placeholder': 'SUA MENSAGEM', 'class': 'input-contact', 'style': 'height: 150px; padding-left: 10px;'}))
 
-
 PLAN_SELECTION = (
     (0, ("ESCOLHA SEU PLANO")),
     (1, "Leve"),
@@ -31,7 +30,6 @@ PLAN_SELECTION = (
     (9, "Gravíssima (20x)"),
     (10, "Gravíssima (60x)")
 )
-
 
 class FormCadastro(forms.ModelForm):
     """
@@ -49,7 +47,7 @@ class FormCadastro(forms.ModelForm):
             'drivers_licence',
             'dut_copy',
             'paid',
-            # 'plan'
+            'plan'
         ]
 
     def __init__(self, *args, **kwargs):
@@ -60,9 +58,11 @@ class FormCadastro(forms.ModelForm):
         self.fields['email'].widget.attrs.update(
             {'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'style': 'padding-left: 10px;', 'type': 'email'})
         self.fields['phone'].widget.attrs.update(
-            {'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'class': 'input-contact', 'style': 'padding-left: 5px;'})
+            {'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'class': 'input-contact', 'style': 'padding-left: 10px;'})
+        self.fields['paid'].widget.attrs.update(
+            {'id': 'paidField;'})
         self.fields['paid'].widget = forms.HiddenInput()
-        # self.fields['plan'].widget = forms.HiddenInput()
+        self.fields['plan'].widget = forms.HiddenInput()
         self.fields['description'].widget.attrs.update(
             {'placeholder': 'DESCRIÇÃO DA MULTA', 'class': 'input-contact', 'style': 'height: 150px; padding-left: 10px;'})
         self.fields['traffic_ticket'].widget.attrs.update(

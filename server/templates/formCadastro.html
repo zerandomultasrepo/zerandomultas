@@ -16,35 +16,21 @@
                             <div class="form-row">
                                 <div class="col" style="margin: 20px 0px 10px 0px;">{{form.name}}</div>
                                 <div class="col" style="margin: 20px 0px 10px 0px;">
-                                    <div class="dropdow"><select class="custom-select input-contact" id="plainSelect" name="plan_selection"><option value="0" selected="">ESCOLHA SEU PLANO</option><option value="1">Leve</option><option value="2">Média</option><option value="3">Grave</option><option value="4">Gravíssima</option><option value="5">Gravíssima (2x)</option><option value="6">Gravíssima (3x)</option><option value="7">Gravíssima (5x)</option><option value="8">Gravíssima (10x)</option><option value="9">Gravíssima (20x)</option><option value="10">Gravíssima (60x)</option></select></div>
+                                    <div class="dropdow"><select class="custom-select input-contact" id="planSelect" style="padding-left: 8px;" name="plan_selection"><option value="0" selected="">ESCOLHA SEU PLANO</option><option value="1">Leve</option><option value="2">Média</option><option value="3">Grave</option><option value="4">Gravíssima</option><option value="5">Gravíssima (2x)</option><option value="6">Gravíssima (3x)</option><option value="7">Gravíssima (5x)</option><option value="8">Gravíssima (10x)</option><option value="9">Gravíssima (20x)</option><option value="10">Gravíssima (60x)</option></select></div>
+                                    {{form.plan}}
                                 </div>
                             </div>
                             <div class="form-row">
-                            {% if form.name.errors %}
-                                <div class="col">
-                                    <div style="color:red"><strong>{{ form.name.errors|escape }}</strong></div>
-                                </div>
-                                <div class="col">
-                                </div>
-                            {% endif %}
                             </div>
                             <div class="form-row">
                                 <div class="col" style="margin: 0px 0px 10px 0px;">{{form.email}}</div>
                                 <div class="col" style="margin: 0px 0px 10px 0px;">{{form.phone}}</div>
                             </div>
                             <div class="form-row">
-
                                 <div class="col">
-                                    {% if form.email.errors %}
-                                    <div style="color:red"><strong>{{ form.email.errors|escape }}</strong></div>
-                                    {% endif %}
                                 </div>
                                 <div class="col">
-                                    {% if form.phone.errors %}
-                                    <div style="color:red"><strong>{{ form.phone.errors|escape }}</strong></div>
-                                    {% endif %}
                                 </div>
-
                             </div>
 
                             <div class="form-row">
@@ -101,14 +87,26 @@
             </div>
         </div>
     </form>
-    <div class="modal fade" role="dialog" tabindex="-1" id="modalCadastro">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
+    {% if messages %}
+    <div id="modalCadastro" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <p id="pModalCadastro"></p>
+                    {% for message in messages %}
+                    <p id="pModalCadastro"> {{ message }} </p>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        setTimeout(function(){
+            $("#modalCadastro").modal('show');
+            setTimeout(function(){
+                $("#modalCadastro").modal('hide');
+            }, 3000);
+        });
+    </script>
+    {% endif %}
 </main>
 {% endblock %}

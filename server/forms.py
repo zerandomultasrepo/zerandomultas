@@ -53,14 +53,11 @@ class FormCadastro(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update(
-            {'placeholder': 'NOME', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'class': 'input-contact', 'style': 'padding-left: 10px;',
-             'required': 'true'})
+            {'id' : 'nome', 'placeholder': 'NOME', 'class': 'input-contact', 'style': 'padding-left: 10px;'})
         self.fields['email'].widget.attrs.update(
-            {'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'style': 'padding-left: 10px;', 'type': 'email'})
+            {'id': 'email', 'placeholder': 'E-MAIL', 'class': 'input-contact', 'style': 'padding-left: 10px;'})
         self.fields['phone'].widget.attrs.update(
-            {'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'class': 'input-contact', 'style': 'padding-left: 10px;'})
-        self.fields['paid'].widget.attrs.update(
-            {'id': 'paidField;'})
+            {'id': 'telefone', 'placeholder': 'TELEFONE', 'class': 'input-contact', 'style': 'padding-left: 10px;'})
         self.fields['paid'].widget = forms.HiddenInput()
         self.fields['plan'].widget = forms.HiddenInput()
         self.fields['description'].widget.attrs.update(

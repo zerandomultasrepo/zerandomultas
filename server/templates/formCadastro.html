@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col text-center"><a id="linkPagamento" style="margin: 0px 0px 0px 10px;" onclick="document.forms['resolveMultas'].submit();"><img id="btEfetuarPagamento" src="{% static "assets/img/bt_efetuar_pagamento.png" %}"></a></div>
+                                <div class="col text-center"><a id="linkPagamento" style="margin: 0px 0px 0px 10px;" target="_blank"><img id="btEfetuarPagamento" src="{% static "assets/img/bt_efetuar_pagamento.png" %}"></a></div>
                             </div>
                             <div class="form-row">
                                 <div class="col" style="margin: 10px 0px 10px 0px;"><img style="width: 90%;" src="{% static "assets/img/top_border.png" %}">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col" style="margin: 0px 0px 10px 0px;"><input id="confirm_email" class="form-control input-contact" type="email" placeholder="E-MAIL"></div>
+                                <div class="col" style="margin: 0px 0px 10px 0px;"><input id="emailCadastroFinal" class="form-control input-contact" type="email" placeholder="E-MAIL"></div>
                             </div>
                             <div class="form-row">
                                 <div class="col" style="margin: 0px 0px 10px 0px;">{{form.description}}</div>

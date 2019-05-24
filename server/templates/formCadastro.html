@@ -87,18 +87,21 @@
             </div>
         </div>
     </form>
-    {% if messages %}
     <div id="modalCadastro" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
+                    <p id="pModalCadastro"></p>
+                    {% if messages %}
                     {% for message in messages %}
                     <p id="pModalCadastro"> {{ message }} </p>
                     {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
+    {% if messages %}
     <script>
         setTimeout(function(){
             $("#modalCadastro").modal('show');
@@ -109,4 +112,7 @@
     </script>
     {% endif %}
 </main>
+<script src="{% static "assets/js/jquery.min.js" %}"></script>
+<script src="{% static "assets/bootstrap/js/bootstrap.min.js" %}"></script>
+<script src="{% static "assets/js/script.min.js" %}"></script>
 {% endblock %}

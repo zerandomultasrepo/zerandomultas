@@ -163,7 +163,7 @@ class CadastroView(SuccessMessageMixin, FormView):
             email = EmailMessage(subject='[OCORRENCIA] ZERANDO MULTAS - %s ' % (data['name']),
                                  body=message,
                                  from_email=data['email'],
-                                 to=['leo.cc14@gmail.com', 'betinho.fmn@gmail.com'],
+                                 to=['zerandomultas@gmail.com', 'betinho.fmn@gmail.com'],
                                  headers={'Message-ID': 'Ocorrencia'}, )
 
             if ('traffic_ticket' in data.keys() and data['traffic_ticket']):

@@ -11,7 +11,7 @@ class FormContato(forms.Form):
     nome = forms.CharField(max_length=120, widget=forms.TextInput(
         attrs={'class': 'input-contact', 'style': 'margin: 20px 0px 10px 0px;', 'style': 'padding-left: 10px;', 'placeholder': 'NOME'}))
     telefone = forms.CharField(
-        widget=forms.TextInput(attrs={'placeholder': 'TELEFONE', 'id': 'telefoneContato', 'style': 'padding-left: 10px;', 'class': 'input-contact'}))
+        widget=forms.TextInput(attrs={'placeholder': 'TELEFONE', 'id': 'telefone', 'style': 'padding-left: 10px;', 'class': 'input-contact'}))
     email = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'style': 'padding-left: 10px;', 'type': 'email'}))
     mensagem = forms.CharField(widget=forms.Textarea(

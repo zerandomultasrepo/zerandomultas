@@ -60,26 +60,26 @@
                             <div class="form-row" style="padding: 0px 0px 10px 0px;">
                                 <div class="col text-left">
                                     <div class="file-upload">
-                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR MULTA </div><div id="noTicketFile" class="file-select-name"></div>{{ form.traffic_ticket }}</div>
+                                        <div class="file-select"><div id="ticketFile" class="file-select-button"> ENVIAR MULTA </div><div id="noTicketFile" class="file-select-name"></div>{{ form.traffic_ticket }}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row" style="padding: 0px 0px 10px 0px;">
                                 <div class="col text-left">
                                     <div class="file-upload">
-                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR DOCUMENTO DE HABILITAÇÃO </div><div id="noLicenseFile" class="file-select-name"></div>{{ form.drivers_licence }}</div>
+                                        <div class="file-select"><div id="licenseFile" class="file-select-button"> ENVIAR DOCUMENTO DE HABILITAÇÃO </div><div id="noLicenseFile" class="file-select-name"></div>{{ form.drivers_licence }}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row" style="padding: 0px 0px 10px 0px;">
                                 <div class="col text-left">
                                     <div class="file-upload">
-                                        <div class="file-select"><div id="fileName" class="file-select-button"> ENVIAR CÓPIA DO CRLV </div><div id="noDutFile" class="file-select-name"></div>{{ form.dut_copy }}</div>
+                                        <div class="file-select"><div id="crlvFile" class="file-select-button"> ENVIAR CÓPIA DO CRLV </div><div id="noDutFile" class="file-select-name"></div>{{ form.dut_copy }}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row" style="padding: 0px 0px 10px 0px;">
-                                <div class="col text-center" style="padding: 10px 0px 10px 0px;"><a style="margin: 0px 0px 0px 10px;" onclick="document.forms['resolveMultas'].submit();" ><img id="btResolvaMultasCadastro" src="{% static "assets/img/bt_resolva_multas_agora.png" %}"></a></div>
+                                <div class="col text-center" style="padding: 10px 0px 10px 0px;"><a style="margin: 0px 0px 0px 10px;"><img id="btResolvaMultasCadastro" src="{% static "assets/img/bt_resolva_multas_agora.png" %}"></a></div>
                             </div>
                         </div>
                     </div>

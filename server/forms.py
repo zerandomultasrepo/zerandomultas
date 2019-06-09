@@ -9,13 +9,13 @@ class FormContato(forms.Form):
     Formulário de contato
     """
     nome = forms.CharField(max_length=120, widget=forms.TextInput(
-        attrs={'class': 'input-contact', 'style': 'margin: 20px 0px 10px 0px;', 'style': 'padding-left: 10px;', 'placeholder': 'NOME'}))
+        attrs={'id' : 'nomeContato', 'class': 'input-contact', 'style': 'margin: 20px 0px 10px 0px;', 'style': 'padding-left: 10px;', 'placeholder': 'NOME'}))
     telefone = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'TELEFONE', 'id': 'telefone', 'style': 'padding-left: 10px;', 'class': 'input-contact'}))
     email = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder': 'E-MAIL', 'id': 'emailContato', 'class': 'input-contact', 'style': 'padding-left: 10px;', 'type': 'email'}))
     mensagem = forms.CharField(widget=forms.Textarea(
-        attrs={'placeholder': 'SUA MENSAGEM', 'class': 'input-contact', 'style': 'height: 150px; padding-left: 10px;'}))
+        attrs={'id' : 'msgContato', 'placeholder': 'SUA MENSAGEM', 'class': 'input-contact', 'style': 'height: 150px; padding-left: 10px;'}))
 
 PLAN_SELECTION = (
     (0, ("ESCOLHA SEU PLANO")),
@@ -86,9 +86,9 @@ class FormComment(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update(
-            {'placeholder': 'Nome', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'style': 'padding-left: 10px;', 'class': 'input-contact',
+            {'id' : 'nomeDepoimento', 'placeholder': 'Nome', 'pattern': '[A-Za-zÁ-Úá-úÂ-û-â-û.çÃ-Õã-õ\s]+$', 'style': 'padding-left: 10px;', 'class': 'input-contact',
              'required': 'true'})
         self.fields['email'].widget.attrs.update(
-            {'placeholder': 'E-mail', 'id': 'emailContato', 'class': 'input-contact', 'style': 'padding-left: 10px;', 'type': 'email'})
+            {'placeholder': 'E-mail', 'id': 'emailDepoimento', 'class': 'input-contact', 'style': 'padding-left: 10px;', 'type': 'email'})
         self.fields['comment'].widget.attrs.update(
-            {'placeholder': 'Depoimento', 'class': 'input-contact', 'style': 'height: 150px; padding-left: 10px;'})
+            {'id' : 'msgDepoimento', 'placeholder': 'Depoimento', 'class': 'input-contact', 'style': 'height: 150px; padding-left: 10px;'})

@@ -107,7 +107,7 @@ class ContatoView(SuccessMessageMixin, FormView):
             '[CONTATO] ZERANDO MULTAS - %s ' % (data['nome']),
             mensagem,
             data['email'],
-            ['zerandomultas@gmail.com', 'betinho.fmn@gmail.com'],
+            ['zerandomultas@gmail.com'],
             fail_silently=False,
         )
 
@@ -163,7 +163,7 @@ class CadastroView(SuccessMessageMixin, FormView):
             email = EmailMessage(subject='[OCORRENCIA] ZERANDO MULTAS - %s ' % (data['name']),
                                  body=message,
                                  from_email=data['email'],
-                                 to=['zerandomultas@gmail.com', 'betinho.fmn@gmail.com'],
+                                 to=['zerandomultas@gmail.com'],
                                  headers={'Message-ID': 'Ocorrencia'}, )
 
             if ('traffic_ticket' in data.keys() and data['traffic_ticket']):
@@ -221,7 +221,7 @@ class CommentView(SuccessMessageMixin, FormView):
                 '[DEPOIMENTO] ZERANDO MULTAS - %s ' % (data['name']),
                 mensagem,
                 data['email'],
-                ['zerandomultas@gmail.com', 'betinho.fmn@gmail.com'],
+                ['zerandomultas@gmail.com'],
             fail_silently=False,
         )
             return self.form_valid(form)
